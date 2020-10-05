@@ -311,7 +311,7 @@ class Gen {
           return this.renderRow(item, 1);
         }).join('')
       }
-      <div class="copyright">Created by echosoar. https://github.com/echosoar/program-languages-compare</div>
+      <div class="copyright">Created by echosoar. Welcome star ❤ <a href="https://github.com/echosoar/program-languages-compare">echosoar/program-languages-compare</a></div>
     </div>
     <script src="./highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
