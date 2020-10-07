@@ -166,6 +166,7 @@ class Gen {
   main() {
     this.getData();
     this.render();
+    this.renderToMd();
   }
   getData() {
     const dataPath = join(__dirname, 'data');
@@ -311,12 +312,46 @@ class Gen {
           return this.renderRow(item, 1);
         }).join('')
       }
-      <div class="copyright">Created by echosoar. Welcome star ❤ <a href="https://github.com/echosoar/program-languages-compare">echosoar/program-languages-compare</a></div>
+      <div class="copyright">Created by echosoar | Welcome star ❤ <a href="https://github.com/echosoar/program-languages-compare">echosoar/program-languages-compare</a> | <a href="./index.md" target="_blank">Markdown Version</a></div>
     </div>
     <script src="./highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     `
     writeFileSync(join(__dirname, 'index.html'), html);
+  }
+
+  renderLangMd(lang, className) {
+    if (!lang || !lang.codeMap || !lang.codeMap[className]) {
+      return '';
+    }
+    return lang.codeMap[className].map(value => {
+      const langLower = lang.info.lang.toLowerCase();
+      return `\n##### ${langLower}\n\`\`\`${langLower}\n${ value.content.join('\n')}\n\`\`\`\n`;
+    }).join('\n');
+  }
+
+  renderRowMd(item, level, className) {
+    if (!className) {
+      className = [];
+    }
+    if (level > this.maxClass) {
+      const classType = className.slice(1).join('-');
+      return this.data.map(lang => {
+        return this.renderLangMd(lang, classType);
+      }).join('');
+    }
+    const isChild = item.child && !!item.child.length;
+
+    return `${'\n####'.slice(0, level + 2)} ${item.class || ''}\n${ isChild ? item.child.map(child => {
+        return this.renderRowMd(child, level + 1, className.concat(item.class));
+      }).join('\n') : this.renderRowMd(null, this.maxClass + 1, className.concat(item.class)) }`
+  }
+  renderToMd() {
+    const md = `# 多语言速查表${
+      table.map(item => {
+        return this.renderRowMd(item, 1);
+      }).join('\n')}`;
+    writeFileSync(join(__dirname, 'index.md'), md);
   }
 }
 
