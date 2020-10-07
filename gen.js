@@ -312,7 +312,7 @@ class Gen {
           return this.renderRow(item, 1);
         }).join('')
       }
-      <div class="copyright">Created by echosoar | Welcome star ❤ <a href="https://github.com/echosoar/program-languages-compare">echosoar/program-languages-compare</a> | <a href="./index.md" target="_blank">Markdown Version</a></div>
+      <div class="copyright">Created by echosoar | Welcome star ❤ <a href="https://github.com/echosoar/program-languages-compare">echosoar/program-languages-compare</a> | <a href="./README.md" target="_blank">Markdown Version</a></div>
     </div>
     <script src="./highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -347,11 +347,11 @@ class Gen {
       }).join('\n') : this.renderRowMd(null, this.maxClass + 1, className.concat(item.class)) }`
   }
   renderToMd() {
-    const md = `# 多语言速查表${
+    const md = `# 多语言速查表\n\n对比多种编程语言之间的异同\n\nCompare the similarities and differences between various programming languages\n\nOnline: [program-languages-compare](https://echosoar.github.io/program-languages-compare/)\n\n${
       table.map(item => {
         return this.renderRowMd(item, 1);
       }).join('\n')}`;
-    writeFileSync(join(__dirname, 'index.md'), md);
+    writeFileSync(join(__dirname, 'README.md'), md);
   }
 }
 
