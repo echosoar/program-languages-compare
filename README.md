@@ -27,6 +27,18 @@ var b string = "str";
 c := false;
 ```
 
+##### c++
+```c++
+int a = 123;
+char b[4] = {"s", "t", "r", "\0"};
+char b[] = "str";
+
+//#include <string>
+std::string b = "str";
+
+bool c = false;
+```
+
 
 #### 多个变量
 
@@ -46,6 +58,13 @@ const (
 )
 ```
 
+##### c++
+```c++
+int d = 1, e = 2;
+const int f = 1, g = 2;
+
+```
+
 
 ### 注释
 
@@ -57,6 +76,12 @@ const (
 
 ##### golang
 ```golang
+// 单行注释
+/* 多行注释 */ 
+```
+
+##### c++
+```c++
 // 单行注释
 /* 多行注释 */ 
 ```
@@ -79,6 +104,11 @@ var str string = "str";
 var str = "str";
 ```
 
+##### c++
+```c++
+
+```
+
 
 #### 数字
 
@@ -90,6 +120,11 @@ let num: number = 123;
 ##### golang
 ```golang
 var num int = 123;
+```
+
+##### c++
+```c++
+
 ```
 
 
@@ -104,6 +139,11 @@ const bf: boolean = false;
 ```golang
 var f bool = false;
 f := false;
+```
+
+##### c++
+```c++
+
 ```
 
 
@@ -125,6 +165,11 @@ var arr = [...]int{1, 2};
 arr := []int{1, 2}
 ```
 
+##### c++
+```c++
+
+```
+
 
 #### 获取长度
 
@@ -136,6 +181,11 @@ arr.length === 2
 ##### golang
 ```golang
 len(arr) == 2
+```
+
+##### c++
+```c++
+
 ```
 
 
@@ -156,6 +206,16 @@ arr.map((item: number, i: number) => {
 for index, value := range arr {}
 ```
 
+##### c++
+```c++
+
+
+
+
+
+
+```
+
 
 #### 截取
 
@@ -167,6 +227,11 @@ arr.slice(0, 1)
 ##### golang
 ```golang
 arr[0:1]
+```
+
+##### c++
+```c++
+
 ```
 
 
@@ -185,6 +250,12 @@ var strArr = [...]string{"a", "b"};
 strings.Join(strArr, ",");
 ```
 
+##### c++
+```c++
+
+
+```
+
 
 ### Map
 
@@ -200,6 +271,11 @@ let map: Map<string, string> = new Map()
 mapa := make(map[string]string)
 ```
 
+##### c++
+```c++
+
+```
+
 
 #### 设置
 
@@ -211,6 +287,11 @@ map = map.set('a', 'b');
 ##### golang
 ```golang
 mapa["a"] = "b";
+```
+
+##### c++
+```c++
+
 ```
 
 
@@ -226,6 +307,11 @@ const mapValue: string = map.get('a');
 mapa["a"]
 ```
 
+##### c++
+```c++
+
+```
+
 
 #### 删除
 
@@ -237,6 +323,11 @@ map.delete('a');
 ##### golang
 ```golang
 delete(mapa, "a");
+```
+
+##### c++
+```c++
+
 ```
 
 
@@ -252,6 +343,13 @@ for (let [key, value] of map) {
 ##### golang
 ```golang
 for key, value := range mapa {}
+```
+
+##### c++
+```c++
+
+
+
 ```
 
 
@@ -276,6 +374,16 @@ obj := struct {
 }{ 123 };
 ```
 
+##### c++
+```c++
+
+
+
+
+
+
+```
+
 
 #### 获取属性值
 
@@ -293,6 +401,12 @@ for i := 0; i < t.NumField(); i++ {
 }
 ```
 
+##### c++
+```c++
+
+
+```
+
 
 ### 正则表达式
 
@@ -306,6 +420,11 @@ const reg: RegExp = /a(b)/i;
 ##### golang
 ```golang
 reg, _ := regexp.Compile("(?i)a");
+```
+
+##### c++
+```c++
+
 ```
 
 
@@ -322,6 +441,11 @@ match, _ := regexp.MatchString("(?i)a","A");
 
 reg, _ := regexp.Compile("(?i)a");
 match, _ := reg.MatchString("A");
+```
+
+##### c++
+```c++
+
 ```
 
 
@@ -352,6 +476,17 @@ index := indexRes[0]
 
 ```
 
+##### c++
+```c++
+
+
+// match === 'ab'
+// capture1 === 'b'
+
+// matchIndex === 0
+
+```
+
 
 ## 语句
 
@@ -369,6 +504,13 @@ if (true) {
 if true {}
 else if true {}
 else { }
+```
+
+##### c++
+```c++
+
+
+
 ```
 
 
@@ -405,6 +547,20 @@ for index, _ := range array {}
 for _, value := range array {}
 ```
 
+##### c++
+```c++
+// 普通for循环
+
+// 仅判断
+
+// 无限循环
+
+// 遍历索引
+
+// 遍历元素
+
+```
+
 
 #### while
 
@@ -416,6 +572,11 @@ while(Math.random()<0.5) {}
 ##### golang
 ```golang
 for i<10 {}
+```
+
+##### c++
+```c++
+
 ```
 
 
@@ -444,6 +605,17 @@ switch value {
 }
 ```
 
+##### c++
+```c++
+
+
+
+
+
+
+
+```
+
 
 ### 错误捕获
 
@@ -463,6 +635,16 @@ value, err := func();
 if err != nil {
   // 错误处理
 }
+
+```
+
+##### c++
+```c++
+
+
+
+
+
 
 ```
 
@@ -487,6 +669,13 @@ func sum(a int, b int) int {
 }
 ```
 
+##### c++
+```c++
+
+
+
+```
+
 
 #### 匿名方法
 
@@ -502,6 +691,13 @@ let sumFun = (a: number, b: number) => {
 sum := (a int, b int) int {
   return a + b;
 }
+```
+
+##### c++
+```c++
+
+
+
 ```
 
 
@@ -520,6 +716,14 @@ sum := (a int, b int) int {
 (a int, b int) int {
   return a + b;
 }(1, 2);
+
+```
+
+##### c++
+```c++
+
+
+
 
 ```
 
@@ -549,6 +753,18 @@ func (a *A) Method {}
 func (a *A) log { }
 ```
 
+##### c++
+```c++
+
+
+
+
+
+
+
+
+```
+
 
 #### 继承
 
@@ -571,6 +787,15 @@ func (b *B) method() {
 }
 ```
 
+##### c++
+```c++
+
+
+
+
+
+```
+
 
 #### 实例化
 
@@ -587,6 +812,12 @@ b := B{
     a: 123
   }
 };
+```
+
+##### c++
+```c++
+
+
 ```
 
 
@@ -627,6 +858,23 @@ type JStruct struct {
 }
 ```
 
+##### c++
+```c++
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
 
 #### 编码
 
@@ -644,6 +892,13 @@ a := struct {
   Name int `json:name`
 }{123}
 jsonStr, _ := json.Marshal(a)
+```
+
+##### c++
+```c++
+
+
+
 ```
 
 
@@ -664,6 +919,12 @@ json.Unmarshal(strBytes, &jsonStruct);
 
 ```
 
+##### c++
+```c++
+
+
+```
+
 
 ### 时间
 
@@ -678,6 +939,11 @@ const now: number = Date.now();
 ```golang
 import "time"
 time.Now().Unix();
+```
+
+##### c++
+```c++
+
 ```
 
 
@@ -708,6 +974,18 @@ int(now.Second()); // 秒，有小数
 
 ```
 
+##### c++
+```c++
+
+
+
+
+
+
+
+
+```
+
 
 ### 系统变量
 
@@ -722,6 +1000,11 @@ __filename
 ```golang
 import "runtime"
 _, filename, _, _ := runtime.Caller(1)
+```
+
+##### c++
+```c++
+
 ```
 
 
@@ -742,6 +1025,11 @@ _, filename, _, _ := runtime.Caller(1)
 dirname := path.Dir(filename)
 ```
 
+##### c++
+```c++
+
+```
+
 
 #### 进程启动路径
 
@@ -754,6 +1042,11 @@ process.cwd()
 ```golang
 import "os"
 dir, _ := os.Getwd() 
+```
+
+##### c++
+```c++
+
 ```
 
 
@@ -770,6 +1063,11 @@ import "os"
 os.Getenv("ENV_NAME")
 ```
 
+##### c++
+```c++
+
+```
+
 
 #### 启动时入参
 
@@ -782,6 +1080,11 @@ process.argv
 ```golang
 import "os"
 os.Args
+```
+
+##### c++
+```c++
+
 ```
 
 
@@ -798,6 +1101,11 @@ import "os"
 os.Getpid()
 ```
 
+##### c++
+```c++
+
+```
+
 
 #### 退出进程
 
@@ -812,6 +1120,11 @@ import "os"
 os.Exit(signal)
 ```
 
+##### c++
+```c++
+
+```
+
 
 #### 输出
 
@@ -824,4 +1137,10 @@ console.log
 ```golang
 import "fmt"
 fmt.Println
+```
+
+##### c++
+```c++
+// include <iostream>
+std::cout << value << endl;
 ```
