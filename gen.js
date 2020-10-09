@@ -179,13 +179,16 @@ class Gen {
         return;
       }
       let code = readFileSync(join(dataPath, fileName)).toString();
-      code = code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
       const codeList = code.split('\n');
       this.data.unshift({
         info,
         codeMap: this.formatCode(codeList)
       });
     }
+  }
+
+  stripHtml(code) {
+    return code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
   formatCode(codeList) {
@@ -212,7 +215,7 @@ class Gen {
       return '';
     }
     return lang.codeMap[className].map(value => {
-      return `<div class="code"><pre><code class="${lang.info.lang.toLowerCase()}">${ value.content.join('\n')}</code></pre></div>`;
+      return `<div class="code"><pre><code class="${lang.info.lang.toLowerCase()}">${ this.stripHtml(value.content.join('\n'))}</code></pre></div>`;
     }).join('');
   }
 
