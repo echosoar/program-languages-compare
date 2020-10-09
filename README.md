@@ -33,7 +33,7 @@ int a = 123;
 char b[4] = {"s", "t", "r", "\0"};
 char b[] = "str";
 
-//#include <string>
+//#include &lt;string&gt;
 std::string b = "str";
 
 bool c = false;
@@ -153,7 +153,7 @@ f := false;
 
 ##### typescript
 ```typescript
-let arr: Array<number> = [1, 2];
+let arr: Array&lt;number&gt; = [1, 2];
 ```
 
 ##### golang
@@ -193,10 +193,10 @@ len(arr) == 2
 
 ##### typescript
 ```typescript
-arr.forEach((item: number, i: number) => {
+arr.forEach((item: number, i: number) =&gt; {
   // do something
 });
-arr.map((item: number, i: number) => {
+arr.map((item: number, i: number) =&gt; {
   return item;
 });
 ```
@@ -263,7 +263,7 @@ strings.Join(strArr, ",");
 
 ##### typescript
 ```typescript
-let map: Map<string, string> = new Map()
+let map: Map&lt;string, string&gt; = new Map()
 ```
 
 ##### golang
@@ -396,7 +396,7 @@ const objKeys: string[] = Object.keys(obj);
 ##### golang
 ```golang
 t := reflect.TypeOf(obj);
-for i := 0; i < t.NumField(); i++ {
+for i := 0; i &lt; t.NumField(); i++ {
   t.Field(i).Name;
 }
 ```
@@ -521,9 +521,9 @@ else { }
 ##### typescript
 ```typescript
 // 普通for循环
-for(let i = 0; i<10; i++) { }
+for(let i = 0; i&lt;10; i++) { }
 // 仅判断
-for(; Math.random()<0.5;) {}
+for(; Math.random()&lt;0.5;) {}
 // 无限循环
 for(;;) {}
 // 遍历索引
@@ -535,10 +535,10 @@ for(let value of arr) {}
 ##### golang
 ```golang
 // 普通for循环
-for i:= 0; i< 10; i++ { }
+for i:= 0; i&lt; 10; i++ { }
 // 仅判断
-for i<10 {}
-for ;i<10; {}
+for i&lt;10 {}
+for ;i&lt;10; {}
 // 无限循环
 for {}
 // 遍历索引
@@ -566,12 +566,12 @@ for _, value := range array {}
 
 ##### typescript
 ```typescript
-while(Math.random()<0.5) {}
+while(Math.random()&lt;0.5) {}
 ```
 
 ##### golang
 ```golang
-for i<10 {}
+for i&lt;10 {}
 ```
 
 ##### c++
@@ -681,7 +681,7 @@ func sum(a int, b int) int {
 
 ##### typescript
 ```typescript
-let sumFun = (a: number, b: number) => {
+let sumFun = (a: number, b: number) =&gt; {
   return a + b;
 }
 ```
@@ -705,7 +705,7 @@ sum := (a int, b int) int {
 
 ##### typescript
 ```typescript
-((a: number, b: number) => {
+((a: number, b: number) =&gt; {
   return a + b;
 })(1, 2);
 
@@ -1141,6 +1141,6 @@ fmt.Println
 
 ##### c++
 ```c++
-// include <iostream>
-std::cout << value << endl;
+// include &lt;iostream&gt;
+std::cout &lt;&lt; value &lt;&lt; endl;
 ```

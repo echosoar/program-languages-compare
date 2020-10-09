@@ -178,8 +178,9 @@ class Gen {
       if (!info) {
         return;
       }
-      const codeList = readFileSync(join(dataPath, fileName)).toString().split('\n');
-
+      let code = readFileSync(join(dataPath, fileName)).toString();
+      code = code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const codeList = code.split('\n');
       this.data.unshift({
         info,
         codeMap: this.formatCode(codeList)
@@ -189,7 +190,7 @@ class Gen {
 
   formatCode(codeList) {
     let type = '';
-    let typeReg = /^\/\/\s+>\s+(.*)\s*$/;
+    let typeReg = /^\/\/\s+-\s+(.*)\s*$/;
     let codeMap = {};
     codeList.forEach(code => {
       if (typeReg.test(code)) {
