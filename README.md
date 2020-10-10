@@ -30,10 +30,10 @@ c := false;
 ##### c++
 ```c++
 int a = 123;
-int a(123);
-char b[4] = {"s", "t", "r", "\0"};
+int a(123); // C++
+int a{123}; // C++ 11
+int a = {123};
 char b[] = "str";
-
 bool c = false;
 ```
 
@@ -170,8 +170,6 @@ arr := []int{1, 2}
 ##### c++
 ```c++
 int arr[2] = {1, 2};
-int arr[] = {1, 2};
-// C++ 11 可以忽略等号
 int arr[] {1, 2};
 ```
 

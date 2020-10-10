@@ -75,10 +75,10 @@ let b: string = 'str';
 var c: boolean = false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">const a int = 1;
 var b string = "str";
 c := false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int a = 123;
-int a(123);
-char b[4] = {"s", "t", "r", "\0"};
+int a(123); // C++
+int a{123}; // C++ 11
+int a = {123};
 char b[] = "str";
-
 bool c = false;</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">多个变量</div>
@@ -128,8 +128,6 @@ arr := [2]int{1, 2};
 var arr = [...]int{1, 2};
 // 切片
 arr := []int{1, 2}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int arr[2] = {1, 2};
-int arr[] = {1, 2};
-// C++ 11 可以忽略等号
 int arr[] {1, 2};</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">获取长度</div>

@@ -1,9 +1,9 @@
 // - 变量-单个变量
 int a = 123;
-int a(123);
-char b[4] = {"s", "t", "r", "\0"};
+int a(123); // C++
+int a{123}; // C++ 11
+int a = {123};
 char b[] = "str";
-
 bool c = false;
 // - 变量-多个变量
 int d = 1, e = 2;
@@ -27,8 +27,6 @@ double num = 1.49;
 bool f = false;
 // - 数组-定义
 int arr[2] = {1, 2};
-int arr[] = {1, 2};
-// C++ 11 可以忽略等号
 int arr[] {1, 2};
 // - 数组-获取长度
 sizeof arr /sizeof(arr[0]) == 2;
