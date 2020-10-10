@@ -30,11 +30,9 @@ c := false;
 ##### c++
 ```c++
 int a = 123;
+int a(123);
 char b[4] = {"s", "t", "r", "\0"};
 char b[] = "str";
-
-//#include <string>
-std::string b = "str";
 
 bool c = false;
 ```
@@ -106,6 +104,10 @@ var str = "str";
 
 ##### c++
 ```c++
+char str[4] = {"s", "t", "r", "\0"};
+char str[] = "str";
+//#include <string>
+std::string str = "str";
 
 ```
 
@@ -124,7 +126,7 @@ var num int = 123;
 
 ##### c++
 ```c++
-
+int num = 123;
 ```
 
 
@@ -143,7 +145,7 @@ f := false;
 
 ##### c++
 ```c++
-
+bool f = false;
 ```
 
 
@@ -167,7 +169,10 @@ arr := []int{1, 2}
 
 ##### c++
 ```c++
-
+int arr[2] = {1, 2};
+int arr[] = {1, 2};
+// C++ 11 可以忽略等号
+int arr[] {1, 2};
 ```
 
 
@@ -185,7 +190,9 @@ len(arr) == 2
 
 ##### c++
 ```c++
-
+sizeof arr /sizeof(arr[0]) == 2;
+// C++ 11
+int length = std::end(arr) - std::begin(arr);
 ```
 
 
@@ -208,11 +215,11 @@ for index, value := range arr {}
 
 ##### c++
 ```c++
-
-
-
-
-
+for (int index = 0; index < len; index ++) {
+  int value = arr[i];
+}
+// C++ 11
+for (auto value : arr) {}
 
 ```
 
@@ -231,7 +238,10 @@ arr[0:1]
 
 ##### c++
 ```c++
-
+int a[1];
+for (int index = 0, aIndex = 0; index < 1; index ++, aIndex ++) {
+  a[aIndex] = arr[index];
+}
 ```
 
 

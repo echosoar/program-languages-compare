@@ -75,11 +75,9 @@ let b: string = 'str';
 var c: boolean = false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">const a int = 1;
 var b string = "str";
 c := false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int a = 123;
+int a(123);
 char b[4] = {"s", "t", "r", "\0"};
 char b[] = "str";
-
-//#include &lt;string&gt;
-std::string b = "str";
 
 bool c = false;</code></pre></div></div></div></div>
     </div><div class="line">
@@ -108,14 +106,18 @@ const int f = 1, g = 2;
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">字符串</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let str: string = 'str';</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var str string = "str";
-var str = "str";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+var str = "str";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">char str[4] = {"s", "t", "r", "\0"};
+char str[] = "str";
+//#include &lt;string&gt;
+std::string str = "str";
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">数字</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let num: number = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var num int = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let num: number = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var num int = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int num = 123;</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">布尔值</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const bf: boolean = false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var f bool = false;
-f := false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+f := false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">bool f = false;</code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">数组</div>
@@ -125,10 +127,15 @@ f := false;</code></pre></div></div><div class="lang"><div class="code"><pre><co
 arr := [2]int{1, 2};
 var arr = [...]int{1, 2};
 // 切片
-arr := []int{1, 2}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+arr := []int{1, 2}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int arr[2] = {1, 2};
+int arr[] = {1, 2};
+// C++ 11 可以忽略等号
+int arr[] {1, 2};</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">获取长度</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.length === 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">len(arr) == 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.length === 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">len(arr) == 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">sizeof arr /sizeof(arr[0]) == 2;
+// C++ 11
+int length = std::end(arr) - std::begin(arr);</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">遍历</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.forEach((item: number, i: number) =&gt; {
@@ -136,15 +143,18 @@ arr := []int{1, 2}</code></pre></div></div><div class="lang"><div class="code"><
 });
 arr.map((item: number, i: number) =&gt; {
   return item;
-});</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for index, value := range arr {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
-
-
-
-
+});</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for index, value := range arr {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">for (int index = 0; index &lt; len; index ++) {
+  int value = arr[i];
+}
+// C++ 11
+for (auto value : arr) {}
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">截取</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.slice(0, 1)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">arr[0:1]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.slice(0, 1)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">arr[0:1]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int a[1];
+for (int index = 0, aIndex = 0; index &lt; 1; index ++, aIndex ++) {
+  a[aIndex] = arr[index];
+}</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">连接</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">var strArr: string[] = ['a', 'b'];

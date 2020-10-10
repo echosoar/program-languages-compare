@@ -1,10 +1,8 @@
 // - 变量-单个变量
 int a = 123;
+int a(123);
 char b[4] = {"s", "t", "r", "\0"};
 char b[] = "str";
-
-//#include <string>
-std::string b = "str";
 
 bool c = false;
 // - 变量-多个变量
@@ -15,26 +13,39 @@ const int f = 1, g = 2;
 // 单行注释
 /* 多行注释 */ 
 // - 基本类型-字符串
+char str[4] = {"s", "t", "r", "\0"};
+char str[] = "str";
+//#include <string>
+std::string str = "str";
 
 // - 基本类型-数字
-
+int num = 123;
 // - 基本类型-浮点数
-
+float num = 1.49f;
+double num = 1.49;
 // - 基本类型-布尔值
-
+bool f = false;
 // - 数组-定义
-
+int arr[2] = {1, 2};
+int arr[] = {1, 2};
+// C++ 11 可以忽略等号
+int arr[] {1, 2};
 // - 数组-获取长度
-
+sizeof arr /sizeof(arr[0]) == 2;
+// C++ 11
+int length = std::end(arr) - std::begin(arr);
 // - 数组-遍历
-
-
-
-
-
+for (int index = 0; index < len; index ++) {
+  int value = arr[i];
+}
+// C++ 11
+for (auto value : arr) {}
 
 // - 数组-截取
-
+int a[1];
+for (int index = 0, aIndex = 0; index < 1; index ++, aIndex ++) {
+  a[aIndex] = arr[index];
+}
 // - 数组-连接
 
 
