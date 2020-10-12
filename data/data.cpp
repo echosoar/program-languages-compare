@@ -45,7 +45,6 @@ for (int index = 0, aIndex = 0; index < 1; index ++, aIndex ++) {
   a[aIndex] = arr[index];
 }
 // - 数组-连接
-// #include <iostream>
 // #include <sstream>
 
 std::stringstream ss;
@@ -53,7 +52,6 @@ int len = sizeof a / sizeof a[0];
 for(int i = 0; i < len; i ++) {
    ss << a[i] << (i < len - 1 ? ".": "");
 }
-std::cout << ss.str() << std::endl;
 
 // - Map-创建
 
