@@ -62,7 +62,7 @@
     <div class="container">
       <div class="line">
         <div class="headTitle">多语言速查表</div>
-        <div class="langTitle">TypeScript</div><div class="langTitle">Golang</div>
+        <div class="langTitle">TypeScript</div><div class="langTitle">Golang</div><div class="langTitle">C++</div>
       </div>
       <div class="line">
       <div class="class" style="">基本概念</div>
@@ -74,7 +74,12 @@
 let b: string = 'str';
 var c: boolean = false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">const a int = 1;
 var b string = "str";
-c := false;</code></pre></div></div></div></div>
+c := false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">const int a = 123;
+int a(123); // C++
+int a{123}; // C++ 11
+int a = {123};
+char b[] = "str";
+bool c = false;</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">多个变量</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let d: number = 1, e: number = 2;
@@ -83,12 +88,15 @@ const (
   a = 1
   b = 2
   c = 3
-)</code></pre></div></div></div></div>
+)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int d = 1, e = 2;
+const int f = 1, g = 2;
+</code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 101px">注释</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">// 单行注释
 /* 多行注释 */ </code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">// 单行注释
+/* 多行注释 */ </code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 单行注释
 /* 多行注释 */ </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -98,64 +106,120 @@ const (
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">字符串</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let str: string = 'str';</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var str string = "str";
-var str = "str";</code></pre></div></div></div></div>
+var str = "str";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">char str[4] = {"s", "t", "r", "\0"};
+char str[] = "str";
+// #include &lt;string&gt;
+std::string str = "str";
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">数字</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let num: number = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var num int = 123;</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let num: number = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var num int = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int num = 123;</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">布尔值</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const bf: boolean = false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var f bool = false;
-f := false;</code></pre></div></div></div></div>
+f := false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">bool f = false;</code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">数组</div>
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">定义</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let arr: Array<number> = [1, 2];</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">// 数组
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let arr: Array&lt;number&gt; = [1, 2];</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">// 数组
 arr := [2]int{1, 2};
 var arr = [...]int{1, 2};
 // 切片
-arr := []int{1, 2}</code></pre></div></div></div></div>
+arr := []int{1, 2}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int arr[2] = {1, 2};
+int arr[] {1, 2};</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">获取长度</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.length === 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">len(arr) == 2</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.length === 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">len(arr) == 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">sizeof arr /sizeof(arr[0]) == 2;
+// C++ 11
+int length = std::end(arr) - std::begin(arr);</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">遍历</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.forEach((item: number, i: number) => {
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.forEach((item: number, i: number) =&gt; {
   // do something
 });
-arr.map((item: number, i: number) => {
+arr.map((item: number, i: number) =&gt; {
   return item;
-});</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for index, value := range arr {}</code></pre></div></div></div></div>
+});</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for index, value := range arr {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">for (int index = 0; index &lt; len; index ++) {
+  int value = arr[i];
+}
+// C++ 11
+for (auto value : arr) {}
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">截取</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.slice(0, 1)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">arr[0:1]</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.slice(0, 1)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">arr[0:1]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int a[1];
+for (int index = 0, aIndex = 0; index &lt; 1; index ++, aIndex ++) {
+  a[aIndex] = arr[index];
+}</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">连接</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">var strArr: string[] = ['a', 'b'];
 strArr.join(',')</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "strings"
 var strArr = [...]string{"a", "b"};
-strings.Join(strArr, ",");</code></pre></div></div></div></div>
+strings.Join(strArr, ",");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;sstream&gt;
+
+std::stringstream ss;
+int len = sizeof a / sizeof a[0];
+for(int i = 0; i &lt; len; i ++) {
+   ss &lt;&lt; a[i] &lt;&lt; (i &lt; len - 1 ? ".": "");
+}
+</code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">Map</div>
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">创建</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let map: Map<string, string> = new Map()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa := make(map[string]string)</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let map: Map&lt;string, string&gt; = new Map()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa := make(map[string]string)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;map&gt;
+typedef std::map&lt;std::string, std::string&gt; STR_MAP;
+STR_MAP mapa;</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">设置</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map = map.set('a', 'b');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"] = "b";</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map = map.set('a', 'b');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"] = "b";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 1. 直接设置，可覆盖
+mapa["a"] = "b";
+
+// 2. insert，当已存在key，则失败
+// #include &lt;utility&gt;
+std::pair&lt;STR_MAP::iterator, bool&gt; Pair;
+Pair result = mapa.insert(STR_MAP::value_type("a", "b"));
+result.second == 1;</code></pre></div></div></div></div>
+    </div><div class="line">
+      <div class="class" style="padding-right: 0px">长度</div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapalen = map.size;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapalen := len(mapa);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int mapalen = mapa.size();</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">读取</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapValue: string = map.get('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"]</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapValue: string = map.get('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 1. 直接读取
+mapa["a"]
+// 2. 通过迭代器来读取
+MAP_STR::iterator ite = mapa.find("c");
+if (ite != mapa.end()) {
+  std::string key = ite-&gt;first;
+  std::string value = ite-&gt;second;
+}
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">删除</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map.delete('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">delete(mapa, "a");</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map.delete('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">delete(mapa, "a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+// 1. 用关键字刪除
+// 如果刪除了會返回1，否則返回0
+int n = mapa.erase("a");
+
+// 2. 用迭代器刪除
+MAP_STR::iterator iter = mapa.find("c");
+mapa.erase(iter);
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">遍历</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">for (let [key, value] of map) {
    // do something
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for key, value := range mapa {}</code></pre></div></div></div></div>
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for key, value := range mapa {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">MAP_STR::iterator iter = mapa.begin();
+while(iter != mapa.end()) {
+  std::string key = ite-&gt;first;
+  std::string value = ite-&gt;second;
+  iter ++;
+}
+</code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">Object</div>
@@ -168,26 +232,32 @@ let obj: Obj = {
   name: 123
 };</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">obj := struct {
   name int
-}{ 123 };</code></pre></div></div></div></div>
+}{ 123 };</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+
+
+
+
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">获取属性值</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const objKeys: string[] = Object.keys(obj);
 </code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">t := reflect.TypeOf(obj);
-for i := 0; i < t.NumField(); i++ {
+for i := 0; i &lt; t.NumField(); i++ {
   t.Field(i).Name;
-}</code></pre></div></div></div></div>
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+</code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">正则表达式</div>
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">定义</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const reg: RegExp = /a(b)/i;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">reg, _ := regexp.Compile("(?i)a");</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const reg: RegExp = /a(b)/i;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">reg, _ := regexp.Compile("(?i)a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">是否匹配</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const isMatch: boolean = reg.test('A');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">match, _ := regexp.MatchString("(?i)a","A");
 
 reg, _ := regexp.Compile("(?i)a");
-match, _ := reg.MatchString("A");</code></pre></div></div></div></div>
+match, _ := reg.MatchString("A");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">匹配结果</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let matchRes = reg.exec('abcd');
@@ -205,6 +275,12 @@ capture1 := res[1];
 indexRes := reg.FindStringIndex("abcd");
 index := indexRes[0]
 // index === 0
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+
+// match === 'ab'
+// capture1 === 'b'
+
+// matchIndex === 0
 </code></pre></div></div></div></div>
     </div></div>
     </div></div>
@@ -216,34 +292,45 @@ index := indexRes[0]
 } else if (true) {
 } else { }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">if true {}
 else if true {}
-else { }</code></pre></div></div></div></div>
+else { }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="">循环</div>
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">for</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">// 普通for循环
-for(let i = 0; i<10; i++) { }
+for(let i = 0; i&lt;10; i++) { }
 // 仅判断
-for(; Math.random()<0.5;) {}
+for(; Math.random()&lt;0.5;) {}
 // 无限循环
 for(;;) {}
 // 遍历索引
 for(let index in arr) { }
 // 遍历元素
 for(let value of arr) {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">// 普通for循环
-for i:= 0; i< 10; i++ { }
+for i:= 0; i&lt; 10; i++ { }
 // 仅判断
-for i<10 {}
-for ;i<10; {}
+for i&lt;10 {}
+for ;i&lt;10; {}
 // 无限循环
 for {}
 // 遍历索引
 for index, _ := range array {}
 // 遍历元素
-for _, value := range array {}</code></pre></div></div></div></div>
+for _, value := range array {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 普通for循环
+
+// 仅判断
+
+// 无限循环
+
+// 遍历索引
+
+// 遍历元素
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">while</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">while(Math.random()<0.5) {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for i<10 {}</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">while(Math.random()&lt;0.5) {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for i&lt;10 {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">选择</div>
@@ -260,7 +347,13 @@ for _, value := range array {}</code></pre></div></div></div></div>
   case 2:
     fallthrough; // 继续下一个case
   case 3:
-}</code></pre></div></div></div></div>
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+
+
+
+
+
+</code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 101px">错误捕获</div>
@@ -273,6 +366,11 @@ for _, value := range array {}</code></pre></div></div></div></div>
 if err != nil {
   // 错误处理
 }
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+
+
+
+
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -285,22 +383,29 @@ if err != nil {
   return a + b;
 }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">func sum(a int, b int) int {
   return a + b;
-}</code></pre></div></div></div></div>
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">匿名方法</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let sumFun = (a: number, b: number) => {
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let sumFun = (a: number, b: number) =&gt; {
   return a + b;
 }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">sum := (a int, b int) int {
   return a + b;
-}</code></pre></div></div></div></div>
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">IIFE</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">((a: number, b: number) => {
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">((a: number, b: number) =&gt; {
   return a + b;
 })(1, 2);
 </code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">(a int, b int) int {
   return a + b;
 }(1, 2);
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+
+
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -318,7 +423,14 @@ if err != nil {
   a number
 }
 func (a *A) Method {}
-func (a *A) log { }</code></pre></div></div></div></div>
+func (a *A) log { }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+
+
+
+
+
+
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">继承</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">class B extends A {
@@ -330,7 +442,11 @@ func (a *A) log { }</code></pre></div></div></div></div>
 }
 func (b *B) method() {
   b.A.method();
-}</code></pre></div></div></div></div>
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+
+
+
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">实例化</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let instance: A = new A(123);
@@ -338,7 +454,8 @@ func (b *B) method() {
   A: A{
     a: 123
   }
-};</code></pre></div></div></div></div>
+};</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+</code></pre></div></div></div></div>
     </div></div>
     </div></div>
     </div><div class="line">
@@ -368,7 +485,19 @@ func (b *B) method() {
     Name string `json:"name"`
     Age  int  `json:"age"`
   } `json:"obj"`
-}</code></pre></div></div></div></div>
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+
+
+
+
+
+
+
+
+
+
+
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">编码</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const jsonStr: string = JSON.stringify({
@@ -377,7 +506,9 @@ func (b *B) method() {
 a := struct {
   Name int `json:name`
 }{123}
-jsonStr, _ := json.Marshal(a)</code></pre></div></div></div></div>
+jsonStr, _ := json.Marshal(a)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">解码</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const jsonObj = JSON.parse('{"name": 123}');
@@ -385,6 +516,7 @@ jsonStr, _ := json.Marshal(a)</code></pre></div></div></div></div>
 strBytes := []btye(str);
 var jsonStruct JStruct;
 json.Unmarshal(strBytes, &jsonStruct);
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -392,7 +524,7 @@ json.Unmarshal(strBytes, &jsonStruct);
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">当前时间戳</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const now: number = Date.now();</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "time"
-time.Now().Unix();</code></pre></div></div></div></div>
+time.Now().Unix();</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">获取时间</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const date = new Date();
@@ -410,6 +542,13 @@ now.Day(); // 日
 now.Hour(); //时
 now.Minute(); // 分
 int(now.Second()); // 秒，有小数
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+
+
+
+
+
+
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -417,7 +556,7 @@ int(now.Second()); // 秒，有小数
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">当前代码文件</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">__filename</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "runtime"
-_, filename, _, _ := runtime.Caller(1)</code></pre></div></div></div></div>
+_, filename, _, _ := runtime.Caller(1)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">当前代码目录</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">__dirname</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import (
@@ -425,31 +564,33 @@ _, filename, _, _ := runtime.Caller(1)</code></pre></div></div></div></div>
   "path"
 )
 _, filename, _, _ := runtime.Caller(1)
-dirname := path.Dir(filename)</code></pre></div></div></div></div>
+dirname := path.Dir(filename)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">进程启动路径</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.cwd()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-dir, _ := os.Getwd() </code></pre></div></div></div></div>
+dir, _ := os.Getwd() </code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">环境变量</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.env.ENV_NAME</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-os.Getenv("ENV_NAME")</code></pre></div></div></div></div>
+os.Getenv("ENV_NAME")</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">启动时入参</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.argv</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-os.Args</code></pre></div></div></div></div>
+os.Args</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">当前进程id</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.pid</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-os.Getpid()</code></pre></div></div></div></div>
+os.Getpid()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">退出进程</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.exit(signal)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-os.Exit(signal)</code></pre></div></div></div></div>
+os.Exit(signal)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">输出</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">console.log</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "fmt"
-fmt.Println</code></pre></div></div></div></div>
+fmt.Println</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// include &lt;iostream&gt;
+std::cout &lt;&lt; value &lt;&lt; endl;
+</code></pre></div></div></div></div>
     </div></div>
     </div></div>
     </div>

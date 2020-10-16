@@ -42,6 +42,7 @@ const table = [
         child: [
           { class: '创建'},
           { class: '设置'},
+          { class: '长度'},
           { class: '读取'},
           { class: '删除'},
           { class: '遍历'},
@@ -178,8 +179,8 @@ class Gen {
       if (!info) {
         return;
       }
-      const codeList = readFileSync(join(dataPath, fileName)).toString().split('\n');
-
+      let code = readFileSync(join(dataPath, fileName)).toString();
+      const codeList = code.split('\n');
       this.data.unshift({
         info,
         codeMap: this.formatCode(codeList)
@@ -187,9 +188,13 @@ class Gen {
     }
   }
 
+  stripHtml(code) {
+    return code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
   formatCode(codeList) {
     let type = '';
-    let typeReg = /^\/\/\s+>\s+(.*)\s*$/;
+    let typeReg = /^\/\/\s+-\s+(.*)\s*$/;
     let codeMap = {};
     codeList.forEach(code => {
       if (typeReg.test(code)) {
@@ -211,7 +216,7 @@ class Gen {
       return '';
     }
     return lang.codeMap[className].map(value => {
-      return `<div class="code"><pre><code class="${lang.info.lang.toLowerCase()}">${ value.content.join('\n')}</code></pre></div>`;
+      return `<div class="code"><pre><code class="${lang.info.lang.toLowerCase()}">${ this.stripHtml(value.content.join('\n'))}</code></pre></div>`;
     }).join('');
   }
 
