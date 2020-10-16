@@ -307,8 +307,10 @@ mapa["a"] = "b";
 
 ##### c++
 ```c++
+// 1. 直接设置，可覆盖
 mapa["a"] = "b";
 
+// 2. insert，当已存在key，则失败
 // #include <utility>
 std::pair<STR_MAP::iterator, bool> Pair;
 Pair result = mapa.insert(STR_MAP::value_type("a", "b"));
@@ -320,7 +322,7 @@ result.second == 1;
 
 ##### typescript
 ```typescript
-map.size
+const mapalen = map.size;
 ```
 
 ##### golang
@@ -330,7 +332,7 @@ mapalen := len(mapa);
 
 ##### c++
 ```c++
-int len = mapa.size();
+int mapalen = mapa.size();
 ```
 
 
@@ -406,6 +408,7 @@ MAP_STR::iterator iter = mapa.begin();
 while(iter != mapa.end()) {
   std::string key = ite->first;
   std::string value = ite->second;
+  iter ++;
 }
 
 ```

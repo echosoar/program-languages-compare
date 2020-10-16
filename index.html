@@ -176,15 +176,17 @@ typedef std::map&lt;std::string, std::string&gt; STR_MAP;
 STR_MAP mapa;</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">设置</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map = map.set('a', 'b');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"] = "b";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">mapa["a"] = "b";
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map = map.set('a', 'b');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"] = "b";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 1. 直接设置，可覆盖
+mapa["a"] = "b";
 
+// 2. insert，当已存在key，则失败
 // #include &lt;utility&gt;
 std::pair&lt;STR_MAP::iterator, bool&gt; Pair;
 Pair result = mapa.insert(STR_MAP::value_type("a", "b"));
 result.second == 1;</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">长度</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map.size</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapalen := len(mapa);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int len = mapa.size();</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapalen = map.size;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapalen := len(mapa);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int mapalen = mapa.size();</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">读取</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapValue: string = map.get('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 1. 直接读取
@@ -215,6 +217,7 @@ mapa.erase(iter);
 while(iter != mapa.end()) {
   std::string key = ite-&gt;first;
   std::string value = ite-&gt;second;
+  iter ++;
 }
 </code></pre></div></div></div></div>
     </div></div>

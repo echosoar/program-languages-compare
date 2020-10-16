@@ -58,8 +58,10 @@ for(int i = 0; i < len; i ++) {
 typedef std::map<std::string, std::string> STR_MAP;
 STR_MAP mapa;
 // - Map-设置
+// 1. 直接设置，可覆盖
 mapa["a"] = "b";
 
+// 2. insert，当已存在key，则失败
 // #include <utility>
 std::pair<STR_MAP::iterator, bool> Pair;
 Pair result = mapa.insert(STR_MAP::value_type("a", "b"));
@@ -75,7 +77,7 @@ if (ite != mapa.end()) {
 }
 
 // - Map-长度
-int len = mapa.size();
+int mapalen = mapa.size();
 // - Map-删除
 
 // 1. 用关键字刪除
@@ -91,6 +93,7 @@ MAP_STR::iterator iter = mapa.begin();
 while(iter != mapa.end()) {
   std::string key = ite->first;
   std::string value = ite->second;
+  iter ++;
 }
 
 // - Object-定义
