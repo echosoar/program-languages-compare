@@ -42,6 +42,7 @@ const table = [
         child: [
           { class: '创建'},
           { class: '设置'},
+          { class: '长度'},
           { class: '读取'},
           { class: '删除'},
           { class: '遍历'},

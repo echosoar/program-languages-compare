@@ -59,6 +59,8 @@
     "unordered_map": "cpp",
     "utility": "cpp",
     "vector": "cpp",
-    "__memory": "cpp"
+    "__memory": "cpp",
+    "__tree": "cpp",
+    "map": "cpp"
   }
 }

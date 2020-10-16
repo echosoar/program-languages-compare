@@ -29,7 +29,7 @@ c := false;
 
 ##### c++
 ```c++
-int a = 123;
+const int a = 123;
 int a(123); // C++
 int a{123}; // C++ 11
 int a = {123};
@@ -106,7 +106,7 @@ var str = "str";
 ```c++
 char str[4] = {"s", "t", "r", "\0"};
 char str[] = "str";
-//#include <string>
+// #include <string>
 std::string str = "str";
 
 ```
@@ -260,7 +260,13 @@ strings.Join(strArr, ",");
 
 ##### c++
 ```c++
+// #include <sstream>
 
+std::stringstream ss;
+int len = sizeof a / sizeof a[0];
+for(int i = 0; i < len; i ++) {
+   ss << a[i] << (i < len - 1 ? ".": "");
+}
 
 ```
 
@@ -281,7 +287,9 @@ mapa := make(map[string]string)
 
 ##### c++
 ```c++
-
+// #include <map>
+typedef std::map<std::string, std::string> STR_MAP;
+STR_MAP mapa;
 ```
 
 
@@ -299,7 +307,30 @@ mapa["a"] = "b";
 
 ##### c++
 ```c++
+mapa["a"] = "b";
 
+// #include <utility>
+std::pair<STR_MAP::iterator, bool> Pair;
+Pair result = mapa.insert(STR_MAP::value_type("a", "b"));
+result.second == 1;
+```
+
+
+#### 长度
+
+##### typescript
+```typescript
+map.size
+```
+
+##### golang
+```golang
+mapalen := len(mapa);
+```
+
+##### c++
+```c++
+int len = mapa.size();
 ```
 
 
@@ -317,6 +348,14 @@ mapa["a"]
 
 ##### c++
 ```c++
+// 1. 直接读取
+mapa["a"]
+// 2. 通过迭代器来读取
+MAP_STR::iterator ite = mapa.find("c");
+if (ite != mapa.end()) {
+  std::string key = ite->first;
+  std::string value = ite->second;
+}
 
 ```
 
@@ -335,6 +374,14 @@ delete(mapa, "a");
 
 ##### c++
 ```c++
+
+// 1. 用关键字刪除
+// 如果刪除了會返回1，否則返回0
+int n = mapa.erase("a");
+
+// 2. 用迭代器刪除
+MAP_STR::iterator iter = mapa.find("c");
+mapa.erase(iter);
 
 ```
 
@@ -355,8 +402,11 @@ for key, value := range mapa {}
 
 ##### c++
 ```c++
-
-
+MAP_STR::iterator iter = mapa.begin();
+while(iter != mapa.end()) {
+  std::string key = ite->first;
+  std::string value = ite->second;
+}
 
 ```
 
@@ -1151,4 +1201,5 @@ fmt.Println
 ```c++
 // include <iostream>
 std::cout << value << endl;
+
 ```

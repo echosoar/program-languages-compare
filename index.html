@@ -74,7 +74,7 @@
 let b: string = 'str';
 var c: boolean = false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">const a int = 1;
 var b string = "str";
-c := false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int a = 123;
+c := false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">const int a = 123;
 int a(123); // C++
 int a{123}; // C++ 11
 int a = {123};
@@ -108,7 +108,7 @@ const int f = 1, g = 2;
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let str: string = 'str';</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var str string = "str";
 var str = "str";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">char str[4] = {"s", "t", "r", "\0"};
 char str[] = "str";
-//#include &lt;string&gt;
+// #include &lt;string&gt;
 std::string str = "str";
 </code></pre></div></div></div></div>
     </div><div class="line">
@@ -158,29 +158,64 @@ for (int index = 0, aIndex = 0; index &lt; 1; index ++, aIndex ++) {
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">var strArr: string[] = ['a', 'b'];
 strArr.join(',')</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "strings"
 var strArr = [...]string{"a", "b"};
-strings.Join(strArr, ",");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+strings.Join(strArr, ",");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;sstream&gt;
+
+std::stringstream ss;
+int len = sizeof a / sizeof a[0];
+for(int i = 0; i &lt; len; i ++) {
+   ss &lt;&lt; a[i] &lt;&lt; (i &lt; len - 1 ? ".": "");
+}
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">Map</div>
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">创建</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let map: Map&lt;string, string&gt; = new Map()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa := make(map[string]string)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let map: Map&lt;string, string&gt; = new Map()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa := make(map[string]string)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;map&gt;
+typedef std::map&lt;std::string, std::string&gt; STR_MAP;
+STR_MAP mapa;</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">设置</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map = map.set('a', 'b');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"] = "b";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map = map.set('a', 'b');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"] = "b";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">mapa["a"] = "b";
+
+// #include &lt;utility&gt;
+std::pair&lt;STR_MAP::iterator, bool&gt; Pair;
+Pair result = mapa.insert(STR_MAP::value_type("a", "b"));
+result.second == 1;</code></pre></div></div></div></div>
+    </div><div class="line">
+      <div class="class" style="padding-right: 0px">长度</div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map.size</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapalen := len(mapa);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int len = mapa.size();</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">读取</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapValue: string = map.get('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapValue: string = map.get('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 1. 直接读取
+mapa["a"]
+// 2. 通过迭代器来读取
+MAP_STR::iterator ite = mapa.find("c");
+if (ite != mapa.end()) {
+  std::string key = ite-&gt;first;
+  std::string value = ite-&gt;second;
+}
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">删除</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map.delete('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">delete(mapa, "a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map.delete('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">delete(mapa, "a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+// 1. 用关键字刪除
+// 如果刪除了會返回1，否則返回0
+int n = mapa.erase("a");
+
+// 2. 用迭代器刪除
+MAP_STR::iterator iter = mapa.find("c");
+mapa.erase(iter);
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">遍历</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">for (let [key, value] of map) {
    // do something
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for key, value := range mapa {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
-
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for key, value := range mapa {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">MAP_STR::iterator iter = mapa.begin();
+while(iter != mapa.end()) {
+  std::string key = ite-&gt;first;
+  std::string value = ite-&gt;second;
+}
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -551,7 +586,8 @@ os.Exit(signal)</code></pre></div></div><div class="lang"><div class="code"><pre
       <div class="class" style="padding-right: 0px">输出</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">console.log</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "fmt"
 fmt.Println</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// include &lt;iostream&gt;
-std::cout &lt;&lt; value &lt;&lt; endl;</code></pre></div></div></div></div>
+std::cout &lt;&lt; value &lt;&lt; endl;
+</code></pre></div></div></div></div>
     </div></div>
     </div></div>
     </div>

@@ -38,6 +38,8 @@ let map: Map<string, string> = new Map()
 map = map.set('a', 'b');
 // - Map-读取
 const mapValue: string = map.get('a');
+// - Map-长度
+map.size
 // - Map-删除
 map.delete('a');
 // - Map-遍历

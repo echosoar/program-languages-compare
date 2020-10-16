@@ -54,16 +54,44 @@ for(int i = 0; i < len; i ++) {
 }
 
 // - Map-创建
-
+// #include <map>
+typedef std::map<std::string, std::string> STR_MAP;
+STR_MAP mapa;
 // - Map-设置
+mapa["a"] = "b";
 
+// #include <utility>
+std::pair<STR_MAP::iterator, bool> Pair;
+Pair result = mapa.insert(STR_MAP::value_type("a", "b"));
+result.second == 1;
 // - Map-读取
+// 1. 直接读取
+mapa["a"]
+// 2. 通过迭代器来读取
+MAP_STR::iterator ite = mapa.find("c");
+if (ite != mapa.end()) {
+  std::string key = ite->first;
+  std::string value = ite->second;
+}
 
+// - Map-长度
+int len = mapa.size();
 // - Map-删除
 
+// 1. 用关键字刪除
+// 如果刪除了會返回1，否則返回0
+int n = mapa.erase("a");
+
+// 2. 用迭代器刪除
+MAP_STR::iterator iter = mapa.find("c");
+mapa.erase(iter);
+
 // - Map-遍历
-
-
+MAP_STR::iterator iter = mapa.begin();
+while(iter != mapa.end()) {
+  std::string key = ite->first;
+  std::string value = ite->second;
+}
 
 // - Object-定义
 

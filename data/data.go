@@ -42,6 +42,8 @@ strings.Join(strArr, ",");
 mapa := make(map[string]string)
 // - Map-设置
 mapa["a"] = "b";
+// - Map-长度
+mapalen := len(mapa);
 // - Map-读取
 mapa["a"]
 // - Map-删除
