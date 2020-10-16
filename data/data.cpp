@@ -15,7 +15,7 @@ const int f = 1, g = 2;
 // - 基本类型-字符串
 char str[4] = {"s", "t", "r", "\0"};
 char str[] = "str";
-//#include <string>
+// #include <string>
 std::string str = "str";
 
 // - 基本类型-数字
@@ -45,7 +45,13 @@ for (int index = 0, aIndex = 0; index < 1; index ++, aIndex ++) {
   a[aIndex] = arr[index];
 }
 // - 数组-连接
+// #include <sstream>
 
+std::stringstream ss;
+int len = sizeof a / sizeof a[0];
+for(int i = 0; i < len; i ++) {
+   ss << a[i] << (i < len - 1 ? ".": "");
+}
 
 // - Map-创建
 
