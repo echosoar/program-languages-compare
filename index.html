@@ -222,7 +222,7 @@ while(iter != mapa.end()) {
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
-      <div class="class" style="">Object</div>
+      <div class="class" style="">结构</div>
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">定义</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">interface Obj {
@@ -232,11 +232,14 @@ let obj: Obj = {
   name: 123
 };</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">obj := struct {
   name int
-}{ 123 };</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+}{ 123 };</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">struct STR {
+  std::string name;
+  int age;
+};
 
-
-
-
+struct STR obj = { "test", 20 };
+// 也可以忽略struct 和 等号
+STR obj { "test", 20 };
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">获取属性值</div>
@@ -244,20 +247,23 @@ let obj: Obj = {
 </code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">t := reflect.TypeOf(obj);
 for i := 0; i &lt; t.NumField(); i++ {
   t.Field(i).Name;
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 不支持
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">正则表达式</div>
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">定义</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const reg: RegExp = /a(b)/i;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">reg, _ := regexp.Compile("(?i)a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const reg: RegExp = /a(b)/i;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">reg, _ := regexp.Compile("(?i)a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;regex&gt;
+std::regex reg("a", std::regex_constants::icase);</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">是否匹配</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const isMatch: boolean = reg.test('A');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">match, _ := regexp.MatchString("(?i)a","A");
-
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const isMatch: boolean = reg.test('A');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">// 1. 直接匹配
+match, _ := regexp.MatchString("(?i)a","A");
+// 2. 先定义，后匹配
 reg, _ := regexp.Compile("(?i)a");
-match, _ := reg.MatchString("A");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+match, _ := reg.MatchString("A");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">std::string s = "A";
+bool match = std::regex_search(s, reg);</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">匹配结果</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let matchRes = reg.exec('abcd');
@@ -275,14 +281,18 @@ capture1 := res[1];
 indexRes := reg.FindStringIndex("abcd");
 index := indexRes[0]
 // index === 0
-</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
-
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">std::smatch submatch;
+std::regex_match(s, submatch, reg);
+std::ssub_match matchRes = submatch[0];
+std::string match = matchRes.str();
 // match === 'ab'
-// capture1 === 'b'
-
-// matchIndex === 0
-</code></pre></div></div></div></div>
+std::ssub_match capture1Res = submatch[1];
+std::string capture1Res = capture1Res.str();
+// capture1 === 'b'</code></pre></div></div></div></div>
     </div></div>
+    </div><div class="line">
+      <div class="class" style="padding-right: 101px">枚举</div>
+      <div class="child"><div class="line"><div class="lang"></div><div class="lang"></div><div class="lang"></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">语句</div>
@@ -589,7 +599,7 @@ os.Exit(signal)</code></pre></div></div><div class="lang"><div class="code"><pre
       <div class="class" style="padding-right: 0px">输出</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">console.log</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "fmt"
 fmt.Println</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// include &lt;iostream&gt;
-std::cout &lt;&lt; value &lt;&lt; endl;
+std::cout &lt;&lt; value &lt;&lt; std::endl;
 </code></pre></div></div></div></div>
     </div></div>
     </div></div>

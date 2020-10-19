@@ -46,14 +46,14 @@ map.delete('a');
 for (let [key, value] of map) {
    // do something
 }
-// - Object-定义
+// - 结构-定义
 interface Obj {
   name: number;
 };
 let obj: Obj = {
   name: 123
 };
-// - Object-获取属性值
+// - 结构-获取属性值
 const objKeys: string[] = Object.keys(obj);
 
 // - 正则表达式-定义

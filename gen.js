@@ -49,7 +49,7 @@ const table = [
         ]
       },
       {
-        class: 'Object',
+        class: '结构',
         child: [
           { class: '定义'},
           { class: '获取属性值'},
@@ -62,6 +62,9 @@ const table = [
           { class: '是否匹配'},
           { class: '匹配结果'},
         ]
+      },
+      {
+        class: '枚举'
       }
       
     ]
