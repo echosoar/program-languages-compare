@@ -50,11 +50,11 @@ mapa["a"]
 delete(mapa, "a");
 // - Map-遍历
 for key, value := range mapa {}
-// - Object-定义
+// - 结构-定义
 obj := struct {
   name int
 }{ 123 };
-// - Object-获取属性值
+// - 结构-获取属性值
 t := reflect.TypeOf(obj);
 for i := 0; i < t.NumField(); i++ {
   t.Field(i).Name;
@@ -62,8 +62,9 @@ for i := 0; i < t.NumField(); i++ {
 // - 正则表达式-定义
 reg, _ := regexp.Compile("(?i)a");
 // - 正则表达式-是否匹配
+// 1. 直接匹配
 match, _ := regexp.MatchString("(?i)a","A");
-
+// 2. 先定义，后匹配
 reg, _ := regexp.Compile("(?i)a");
 match, _ := reg.MatchString("A");
 // - 正则表达式-匹配结果

@@ -414,7 +414,7 @@ while(iter != mapa.end()) {
 ```
 
 
-### Object
+### 结构
 
 #### 定义
 
@@ -437,11 +437,14 @@ obj := struct {
 
 ##### c++
 ```c++
+struct STR {
+  std::string name;
+  int age;
+};
 
-
-
-
-
+struct STR obj = { "test", 20 };
+// 也可以忽略struct 和 等号
+STR obj { "test", 20 };
 
 ```
 
@@ -464,7 +467,7 @@ for i := 0; i < t.NumField(); i++ {
 
 ##### c++
 ```c++
-
+// 不支持
 
 ```
 
@@ -485,7 +488,8 @@ reg, _ := regexp.Compile("(?i)a");
 
 ##### c++
 ```c++
-
+// #include <regex>
+std::regex reg("a", std::regex_constants::icase);
 ```
 
 
@@ -498,15 +502,17 @@ const isMatch: boolean = reg.test('A');
 
 ##### golang
 ```golang
+// 1. 直接匹配
 match, _ := regexp.MatchString("(?i)a","A");
-
+// 2. 先定义，后匹配
 reg, _ := regexp.Compile("(?i)a");
 match, _ := reg.MatchString("A");
 ```
 
 ##### c++
 ```c++
-
+std::string s = "A";
+bool match = std::regex_search(s, reg);
 ```
 
 
@@ -539,14 +545,18 @@ index := indexRes[0]
 
 ##### c++
 ```c++
-
-
+std::smatch submatch;
+std::regex_match(s, submatch, reg);
+std::ssub_match matchRes = submatch[0];
+std::string match = matchRes.str();
 // match === 'ab'
+std::ssub_match capture1Res = submatch[1];
+std::string capture1Res = capture1Res.str();
 // capture1 === 'b'
-
-// matchIndex === 0
-
 ```
+
+
+### 枚举
 
 
 ## 语句
@@ -1203,6 +1213,6 @@ fmt.Println
 ##### c++
 ```c++
 // include <iostream>
-std::cout << value << endl;
+std::cout << value << std::endl;
 
 ```

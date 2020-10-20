@@ -96,28 +96,34 @@ while(iter != mapa.end()) {
   iter ++;
 }
 
-// - Object-定义
+// - 结构-定义
+struct STR {
+  std::string name;
+  int age;
+};
 
+struct STR obj = { "test", 20 };
+// 也可以忽略struct 和 等号
+STR obj { "test", 20 };
 
-
-
-
-
-// - Object-获取属性值
-
+// - 结构-获取属性值
+// 不支持
 
 // - 正则表达式-定义
-
+// #include <regex>
+std::regex reg("a", std::regex_constants::icase);
 // - 正则表达式-是否匹配
-
+std::string s = "A";
+bool match = std::regex_search(s, reg);
 // - 正则表达式-匹配结果
-
-
+std::smatch submatch;
+std::regex_match(s, submatch, reg);
+std::ssub_match matchRes = submatch[0];
+std::string match = matchRes.str();
 // match === 'ab'
+std::ssub_match capture1Res = submatch[1];
+std::string capture1Res = capture1Res.str();
 // capture1 === 'b'
-
-// matchIndex === 0
-
 // - 条件
 
 
@@ -229,4 +235,4 @@ while(iter != mapa.end()) {
 
 // - 系统变量-输出
 // include <iostream>
-std::cout << value << endl;
+std::cout << value << std::endl;
