@@ -188,7 +188,7 @@ len(arr) == 2
 
 ##### c++
 ```c++
-sizeof arr /sizeof(arr[0]) == 2;
+sizeof(arr)/sizeof(arr[0]) == 2;
 // C++ 11
 int length = std::end(arr) - std::begin(arr);
 ```
@@ -579,8 +579,9 @@ else { }
 
 ##### c++
 ```c++
-
-
+if (true) {
+} else if (true) {
+} else { }
 
 ```
 
@@ -621,15 +622,35 @@ for _, value := range array {}
 ##### c++
 ```c++
 // 普通for循环
-
+for( int a = 1; a < 10; a ++ )
+{
+}
 // 仅判断
-
+for(; a < 10;) {}
 // 无限循环
-
+for( ; ; )
+{
+}
 // 遍历索引
+for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++)
 
 // 遍历元素
-
+for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++)
+{
+  int v = arr[i]
+}
+// C++ 11
+for (auto v : arr)
+for (const int& v : arr)
+for (auto&& v : arr)
+// using for_each
+std::vector<int> varr(arr, arr + sizeof(arr)/sizeof(arr[0]));
+std::for_each(varr.begin(), varr.end(), [](int &v){
+  std::cout << " " << v;
+});
+std::for_each(varr.cbegin(), varr.cend(), [](const int &v){
+  std::cout << " " << v;
+});
 ```
 
 

@@ -29,7 +29,7 @@ bool f = false;
 int arr[2] = {1, 2};
 int arr[] {1, 2};
 // - 数组-获取长度
-sizeof arr /sizeof(arr[0]) == 2;
+sizeof(arr)/sizeof(arr[0]) == 2;
 // C++ 11
 int length = std::end(arr) - std::begin(arr);
 // - 数组-遍历
@@ -125,20 +125,41 @@ std::ssub_match capture1Res = submatch[1];
 std::string capture1Res = capture1Res.str();
 // capture1 === 'b'
 // - 条件
-
-
+if (true) {
+} else if (true) {
+} else { }
 
 // - 循环-for
 // 普通for循环
-
+for( int a = 1; a < 10; a ++ )
+{
+}
 // 仅判断
-
+for(; a < 10;) {}
 // 无限循环
-
+for( ; ; )
+{
+}
 // 遍历索引
+for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++)
 
 // 遍历元素
-
+for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++)
+{
+  int v = arr[i]
+}
+// C++ 11
+for (auto v : arr)
+for (const int& v : arr)
+for (auto&& v : arr)
+// using for_each
+std::vector<int> varr(arr, arr + sizeof(arr)/sizeof(arr[0]));
+std::for_each(varr.begin(), varr.end(), [](int &v){
+  std::cout << " " << v;
+});
+std::for_each(varr.cbegin(), varr.cend(), [](const int &v){
+  std::cout << " " << v;
+});
 // - 循环-while
 
 // - 选择-switch
