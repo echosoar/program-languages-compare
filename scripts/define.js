@@ -1,4 +1,22 @@
-module.exports = [
+const languageMap = {
+    ts: {
+      lang: 'TypeScript',
+      play: 'https://www.typescriptlang.org/play',
+    },
+    go: {
+      lang: 'Golang',
+      play: 'https://go.dev/play/',
+    },
+    rs: {
+      lang: 'Rust',
+      play: 'https://play.rust-lang.org/',
+    },
+    cpp: {
+      lang: 'C++',
+      play: 'https://www.onlinegdb.com/online_c++_compiler',
+    }
+  };
+const table = [
     {
         class: '基本概念',
         child: [
@@ -146,3 +164,8 @@ module.exports = [
         ]
     }
 ]
+
+module.exports = {
+    table,
+    languageMap,
+}

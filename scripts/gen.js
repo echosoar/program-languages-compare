@@ -1,20 +1,6 @@
 const { readdirSync, readFileSync, writeFileSync } = require('fs');
 const { join, extname } = require('path');
-const table = require('./table');
-const languageMap = {
-  ts: {
-    lang: 'TypeScript',
-  },
-  go: {
-    lang: 'Golang'
-  },
-  rs: {
-    lang: 'Rust'
-  },
-  cpp: {
-    lang: 'C++',
-  }
-};
+const { table, languageMap } = require('./define');
 class Gen {
   data;
   maxClass = 3;
@@ -174,7 +160,7 @@ class Gen {
       <div class="line">
         <div class="headTitle">多语言速查表</div>
         ${ this.data.map(lang => {
-          return `<div class="langTitle">${ lang.info.lang }</div>`;
+          return `<div class="langTitle">${ lang.info.lang }${ lang.info.play ? ` <a href="${lang.info.play}" target="_blank">Play</a>` : ''}</div>`;
         }).join('') }
       </div>
       ${
