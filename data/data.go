@@ -31,7 +31,9 @@ arr := []int{1, 2}
 // - 数组-获取长度
 len(arr) == 2
 // - 数组-遍历
-for index, value := range arr {}
+for index, value := range arr {
+  // do something
+}
 // - 数组-截取
 arr[0:1]
 // - 数组-连接

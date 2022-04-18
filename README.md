@@ -27,6 +27,11 @@ var b string = "str";
 c := false;
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 const int a = 123;
@@ -54,6 +59,11 @@ const (
   b = 2
   c = 3
 )
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -102,6 +112,11 @@ var str string = "str";
 var str = "str";
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 char str[4] = {"s", "t", "r", "\0"};
@@ -124,6 +139,11 @@ let num: number = 123;
 var num int = 123;
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 int num = 123;
@@ -141,6 +161,11 @@ const bf: boolean = false;
 ```golang
 var f bool = false;
 f := false;
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -167,6 +192,11 @@ var arr = [...]int{1, 2};
 arr := []int{1, 2}
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 int arr[2] = {1, 2};
@@ -184,6 +214,11 @@ arr.length === 2
 ##### golang
 ```golang
 len(arr) == 2
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -208,7 +243,14 @@ arr.map((item: number, i: number) => {
 
 ##### golang
 ```golang
-for index, value := range arr {}
+for index, value := range arr {
+  // do something
+}
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -234,6 +276,11 @@ arr.slice(0, 1)
 arr[0:1]
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 int a[1];
@@ -256,6 +303,11 @@ strArr.join(',')
 import "strings"
 var strArr = [...]string{"a", "b"};
 strings.Join(strArr, ",");
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -285,6 +337,11 @@ let map: Map<string, string> = new Map()
 mapa := make(map[string]string)
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 // #include <map>
@@ -303,6 +360,11 @@ map = map.set('a', 'b');
 ##### golang
 ```golang
 mapa["a"] = "b";
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -330,6 +392,11 @@ const mapalen = map.size;
 mapalen := len(mapa);
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 int mapalen = mapa.size();
@@ -346,6 +413,11 @@ const mapValue: string = map.get('a');
 ##### golang
 ```golang
 mapa["a"]
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -374,6 +446,11 @@ map.delete('a');
 delete(mapa, "a");
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 
@@ -400,6 +477,11 @@ for (let [key, value] of map) {
 ##### golang
 ```golang
 for key, value := range mapa {}
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -435,6 +517,11 @@ obj := struct {
 }{ 123 };
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 struct STR {
@@ -465,6 +552,11 @@ for i := 0; i < t.NumField(); i++ {
 }
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 // 不支持
@@ -484,6 +576,11 @@ const reg: RegExp = /a(b)/i;
 ##### golang
 ```golang
 reg, _ := regexp.Compile("(?i)a");
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -507,6 +604,11 @@ match, _ := regexp.MatchString("(?i)a","A");
 // 2. 先定义，后匹配
 reg, _ := regexp.Compile("(?i)a");
 match, _ := reg.MatchString("A");
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -540,6 +642,11 @@ capture1 := res[1];
 indexRes := reg.FindStringIndex("abcd");
 index := indexRes[0]
 // index === 0
+
+```
+
+##### rust
+```rust
 
 ```
 
@@ -618,6 +725,11 @@ for index, _ := range array {}
 for _, value := range array {}
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 // 普通for循环
@@ -643,6 +755,11 @@ while(Math.random()<0.5) {}
 ##### golang
 ```golang
 for i<10 {}
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -674,6 +791,11 @@ switch value {
     fallthrough; // 继续下一个case
   case 3:
 }
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -740,6 +862,11 @@ func sum(a int, b int) int {
 }
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 
@@ -762,6 +889,11 @@ let sumFun = (a: number, b: number) => {
 sum := (a int, b int) int {
   return a + b;
 }
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -787,6 +919,11 @@ sum := (a int, b int) int {
 (a int, b int) int {
   return a + b;
 }(1, 2);
+
+```
+
+##### rust
+```rust
 
 ```
 
@@ -824,6 +961,11 @@ func (a *A) Method {}
 func (a *A) log { }
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 
@@ -858,6 +1000,11 @@ func (b *B) method() {
 }
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 
@@ -883,6 +1030,11 @@ b := B{
     a: 123
   }
 };
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -929,6 +1081,11 @@ type JStruct struct {
 }
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 
@@ -965,6 +1122,11 @@ a := struct {
 jsonStr, _ := json.Marshal(a)
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 
@@ -990,6 +1152,11 @@ json.Unmarshal(strBytes, &jsonStruct);
 
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 
@@ -1010,6 +1177,11 @@ const now: number = Date.now();
 ```golang
 import "time"
 time.Now().Unix();
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -1045,6 +1217,11 @@ int(now.Second()); // 秒，有小数
 
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 
@@ -1073,6 +1250,11 @@ import "runtime"
 _, filename, _, _ := runtime.Caller(1)
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 
@@ -1096,6 +1278,11 @@ _, filename, _, _ := runtime.Caller(1)
 dirname := path.Dir(filename)
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 
@@ -1113,6 +1300,11 @@ process.cwd()
 ```golang
 import "os"
 dir, _ := os.Getwd() 
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -1134,6 +1326,11 @@ import "os"
 os.Getenv("ENV_NAME")
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 
@@ -1151,6 +1348,11 @@ process.argv
 ```golang
 import "os"
 os.Args
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++
@@ -1172,6 +1374,11 @@ import "os"
 os.Getpid()
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 
@@ -1191,6 +1398,11 @@ import "os"
 os.Exit(signal)
 ```
 
+##### rust
+```rust
+
+```
+
 ##### c++
 ```c++
 
@@ -1208,6 +1420,11 @@ console.log
 ```golang
 import "fmt"
 fmt.Println
+```
+
+##### rust
+```rust
+
 ```
 
 ##### c++

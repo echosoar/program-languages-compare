@@ -1,4 +1,5 @@
 
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="./styles/vs.css">
     <style>
     body {
@@ -62,7 +63,7 @@
     <div class="container">
       <div class="line">
         <div class="headTitle">多语言速查表</div>
-        <div class="langTitle">TypeScript</div><div class="langTitle">Golang</div><div class="langTitle">C++</div>
+        <div class="langTitle">TypeScript</div><div class="langTitle">Golang</div><div class="langTitle">Rust</div><div class="langTitle">C++</div>
       </div>
       <div class="line">
       <div class="class" style="">基本概念</div>
@@ -74,7 +75,7 @@
 let b: string = 'str';
 var c: boolean = false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">const a int = 1;
 var b string = "str";
-c := false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">const int a = 123;
+c := false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">const int a = 123;
 int a(123); // C++
 int a{123}; // C++ 11
 int a = {123};
@@ -88,7 +89,7 @@ const (
   a = 1
   b = 2
   c = 3
-)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int d = 1, e = 2;
+)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int d = 1, e = 2;
 const int f = 1, g = 2;
 </code></pre></div></div></div></div>
     </div></div>
@@ -96,7 +97,7 @@ const int f = 1, g = 2;
       <div class="class" style="padding-right: 101px">注释</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">// 单行注释
 /* 多行注释 */ </code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">// 单行注释
-/* 多行注释 */ </code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 单行注释
+/* 多行注释 */ </code></pre></div></div><div class="lang"></div><div class="lang"><div class="code"><pre><code class="c++">// 单行注释
 /* 多行注释 */ </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -106,18 +107,18 @@ const int f = 1, g = 2;
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">字符串</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let str: string = 'str';</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var str string = "str";
-var str = "str";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">char str[4] = {"s", "t", "r", "\0"};
+var str = "str";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">char str[4] = {"s", "t", "r", "\0"};
 char str[] = "str";
 // #include &lt;string&gt;
 std::string str = "str";
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">数字</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let num: number = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var num int = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int num = 123;</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let num: number = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var num int = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int num = 123;</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">布尔值</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const bf: boolean = false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var f bool = false;
-f := false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">bool f = false;</code></pre></div></div></div></div>
+f := false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">bool f = false;</code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">数组</div>
@@ -127,11 +128,11 @@ f := false;</code></pre></div></div><div class="lang"><div class="code"><pre><co
 arr := [2]int{1, 2};
 var arr = [...]int{1, 2};
 // 切片
-arr := []int{1, 2}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int arr[2] = {1, 2};
+arr := []int{1, 2}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int arr[2] = {1, 2};
 int arr[] {1, 2};</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">获取长度</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.length === 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">len(arr) == 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">sizeof arr /sizeof(arr[0]) == 2;
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.length === 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">len(arr) == 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">sizeof arr /sizeof(arr[0]) == 2;
 // C++ 11
 int length = std::end(arr) - std::begin(arr);</code></pre></div></div></div></div>
     </div><div class="line">
@@ -141,7 +142,9 @@ int length = std::end(arr) - std::begin(arr);</code></pre></div></div></div></di
 });
 arr.map((item: number, i: number) =&gt; {
   return item;
-});</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for index, value := range arr {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">for (int index = 0; index &lt; len; index ++) {
+});</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for index, value := range arr {
+  // do something
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">for (int index = 0; index &lt; len; index ++) {
   int value = arr[i];
 }
 // C++ 11
@@ -149,7 +152,7 @@ for (auto value : arr) {}
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">截取</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.slice(0, 1)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">arr[0:1]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int a[1];
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.slice(0, 1)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">arr[0:1]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int a[1];
 for (int index = 0, aIndex = 0; index &lt; 1; index ++, aIndex ++) {
   a[aIndex] = arr[index];
 }</code></pre></div></div></div></div>
@@ -158,7 +161,7 @@ for (int index = 0, aIndex = 0; index &lt; 1; index ++, aIndex ++) {
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">var strArr: string[] = ['a', 'b'];
 strArr.join(',')</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "strings"
 var strArr = [...]string{"a", "b"};
-strings.Join(strArr, ",");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;sstream&gt;
+strings.Join(strArr, ",");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;sstream&gt;
 
 std::stringstream ss;
 int len = sizeof a / sizeof a[0];
@@ -171,12 +174,12 @@ for(int i = 0; i &lt; len; i ++) {
       <div class="class" style="">Map</div>
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">创建</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let map: Map&lt;string, string&gt; = new Map()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa := make(map[string]string)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;map&gt;
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let map: Map&lt;string, string&gt; = new Map()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa := make(map[string]string)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;map&gt;
 typedef std::map&lt;std::string, std::string&gt; STR_MAP;
 STR_MAP mapa;</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">设置</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map = map.set('a', 'b');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"] = "b";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 1. 直接设置，可覆盖
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map = map.set('a', 'b');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"] = "b";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 1. 直接设置，可覆盖
 mapa["a"] = "b";
 
 // 2. insert，当已存在key，则失败
@@ -186,10 +189,10 @@ Pair result = mapa.insert(STR_MAP::value_type("a", "b"));
 result.second == 1;</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">长度</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapalen = map.size;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapalen := len(mapa);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int mapalen = mapa.size();</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapalen = map.size;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapalen := len(mapa);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int mapalen = mapa.size();</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">读取</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapValue: string = map.get('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 1. 直接读取
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapValue: string = map.get('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 1. 直接读取
 mapa["a"]
 // 2. 通过迭代器来读取
 MAP_STR::iterator ite = mapa.find("c");
@@ -200,7 +203,7 @@ if (ite != mapa.end()) {
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">删除</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map.delete('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">delete(mapa, "a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map.delete('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">delete(mapa, "a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 // 1. 用关键字刪除
 // 如果刪除了會返回1，否則返回0
 int n = mapa.erase("a");
@@ -213,7 +216,7 @@ mapa.erase(iter);
       <div class="class" style="padding-right: 0px">遍历</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">for (let [key, value] of map) {
    // do something
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for key, value := range mapa {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">MAP_STR::iterator iter = mapa.begin();
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for key, value := range mapa {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">MAP_STR::iterator iter = mapa.begin();
 while(iter != mapa.end()) {
   std::string key = ite-&gt;first;
   std::string value = ite-&gt;second;
@@ -232,7 +235,7 @@ let obj: Obj = {
   name: 123
 };</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">obj := struct {
   name int
-}{ 123 };</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">struct STR {
+}{ 123 };</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">struct STR {
   std::string name;
   int age;
 };
@@ -247,14 +250,14 @@ STR obj { "test", 20 };
 </code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">t := reflect.TypeOf(obj);
 for i := 0; i &lt; t.NumField(); i++ {
   t.Field(i).Name;
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 不支持
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 不支持
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">正则表达式</div>
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">定义</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const reg: RegExp = /a(b)/i;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">reg, _ := regexp.Compile("(?i)a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;regex&gt;
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const reg: RegExp = /a(b)/i;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">reg, _ := regexp.Compile("(?i)a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;regex&gt;
 std::regex reg("a", std::regex_constants::icase);</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">是否匹配</div>
@@ -262,7 +265,7 @@ std::regex reg("a", std::regex_constants::icase);</code></pre></div></div></div>
 match, _ := regexp.MatchString("(?i)a","A");
 // 2. 先定义，后匹配
 reg, _ := regexp.Compile("(?i)a");
-match, _ := reg.MatchString("A");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">std::string s = "A";
+match, _ := reg.MatchString("A");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">std::string s = "A";
 bool match = std::regex_search(s, reg);</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">匹配结果</div>
@@ -281,7 +284,7 @@ capture1 := res[1];
 indexRes := reg.FindStringIndex("abcd");
 index := indexRes[0]
 // index === 0
-</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">std::smatch submatch;
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">std::smatch submatch;
 std::regex_match(s, submatch, reg);
 std::ssub_match matchRes = submatch[0];
 std::string match = matchRes.str();
@@ -292,7 +295,7 @@ std::string capture1Res = capture1Res.str();
     </div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 101px">枚举</div>
-      <div class="child"><div class="line"><div class="lang"></div><div class="lang"></div><div class="lang"></div></div></div>
+      <div class="child"><div class="line"><div class="lang"></div><div class="lang"></div><div class="lang"></div><div class="lang"></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">语句</div>
@@ -302,7 +305,7 @@ std::string capture1Res = capture1Res.str();
 } else if (true) {
 } else { }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">if true {}
 else if true {}
-else { }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+else { }</code></pre></div></div><div class="lang"></div><div class="lang"><div class="code"><pre><code class="c++">
 
 </code></pre></div></div></div></div>
     </div><div class="line">
@@ -328,7 +331,7 @@ for {}
 // 遍历索引
 for index, _ := range array {}
 // 遍历元素
-for _, value := range array {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 普通for循环
+for _, value := range array {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 普通for循环
 
 // 仅判断
 
@@ -340,7 +343,7 @@ for _, value := range array {}</code></pre></div></div><div class="lang"><div cl
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">while</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">while(Math.random()&lt;0.5) {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for i&lt;10 {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">while(Math.random()&lt;0.5) {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for i&lt;10 {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">选择</div>
@@ -357,7 +360,7 @@ for _, value := range array {}</code></pre></div></div><div class="lang"><div cl
   case 2:
     fallthrough; // 继续下一个case
   case 3:
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 
 
 
@@ -376,7 +379,7 @@ for _, value := range array {}</code></pre></div></div><div class="lang"><div cl
 if err != nil {
   // 错误处理
 }
-</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+</code></pre></div></div><div class="lang"></div><div class="lang"><div class="code"><pre><code class="c++">
 
 
 
@@ -393,7 +396,7 @@ if err != nil {
   return a + b;
 }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">func sum(a int, b int) int {
   return a + b;
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 
 </code></pre></div></div></div></div>
     </div><div class="line">
@@ -402,7 +405,7 @@ if err != nil {
   return a + b;
 }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">sum := (a int, b int) int {
   return a + b;
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 
 </code></pre></div></div></div></div>
     </div><div class="line">
@@ -413,7 +416,7 @@ if err != nil {
 </code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">(a int, b int) int {
   return a + b;
 }(1, 2);
-</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 
 
 </code></pre></div></div></div></div>
@@ -433,7 +436,7 @@ if err != nil {
   a number
 }
 func (a *A) Method {}
-func (a *A) log { }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+func (a *A) log { }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 
 
 
@@ -452,7 +455,7 @@ func (a *A) log { }</code></pre></div></div><div class="lang"><div class="code">
 }
 func (b *B) method() {
   b.A.method();
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 
 
 
@@ -464,7 +467,7 @@ func (b *B) method() {
   A: A{
     a: 123
   }
-};</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+};</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 </code></pre></div></div></div></div>
     </div></div>
     </div></div>
@@ -495,7 +498,7 @@ func (b *B) method() {
     Name string `json:"name"`
     Age  int  `json:"age"`
   } `json:"obj"`
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 
 
 
@@ -516,7 +519,7 @@ func (b *B) method() {
 a := struct {
   Name int `json:name`
 }{123}
-jsonStr, _ := json.Marshal(a)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+jsonStr, _ := json.Marshal(a)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 
 </code></pre></div></div></div></div>
     </div><div class="line">
@@ -526,7 +529,7 @@ jsonStr, _ := json.Marshal(a)</code></pre></div></div><div class="lang"><div cla
 strBytes := []btye(str);
 var jsonStruct JStruct;
 json.Unmarshal(strBytes, &jsonStruct);
-</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -534,7 +537,7 @@ json.Unmarshal(strBytes, &jsonStruct);
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">当前时间戳</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const now: number = Date.now();</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "time"
-time.Now().Unix();</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+time.Now().Unix();</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">获取时间</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const date = new Date();
@@ -552,7 +555,7 @@ now.Day(); // 日
 now.Hour(); //时
 now.Minute(); // 分
 int(now.Second()); // 秒，有小数
-</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 
 
 
@@ -566,7 +569,7 @@ int(now.Second()); // 秒，有小数
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">当前代码文件</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">__filename</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "runtime"
-_, filename, _, _ := runtime.Caller(1)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+_, filename, _, _ := runtime.Caller(1)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">当前代码目录</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">__dirname</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import (
@@ -574,31 +577,31 @@ _, filename, _, _ := runtime.Caller(1)</code></pre></div></div><div class="lang"
   "path"
 )
 _, filename, _, _ := runtime.Caller(1)
-dirname := path.Dir(filename)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+dirname := path.Dir(filename)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">进程启动路径</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.cwd()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-dir, _ := os.Getwd() </code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+dir, _ := os.Getwd() </code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">环境变量</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.env.ENV_NAME</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-os.Getenv("ENV_NAME")</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+os.Getenv("ENV_NAME")</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">启动时入参</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.argv</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-os.Args</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+os.Args</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">当前进程id</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.pid</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-os.Getpid()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+os.Getpid()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">退出进程</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.exit(signal)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-os.Exit(signal)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+os.Exit(signal)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">输出</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">console.log</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "fmt"
-fmt.Println</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// include &lt;iostream&gt;
+fmt.Println</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// include &lt;iostream&gt;
 std::cout &lt;&lt; value &lt;&lt; std::endl;
 </code></pre></div></div></div></div>
     </div></div>
