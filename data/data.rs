@@ -82,33 +82,96 @@ let va = vec!["1","2","3"];
 // 1-2-3
 va.join("-");
 // - Map-创建
-
+use std::collections::HashMap;
+let mut map = HashMap::new();
+// 或者也可以通过 array 来初始化
+let mut map2 = HashMap::from([
+    ("key1", "value1"),
+    ("key2", "value2"),
+])
 // - Map-设置
-
+map.insert(
+    "key".to_string(),
+    "value"
+);
 // - Map-长度
-
+map.len();
 // - Map-读取
-
+// get 的参数类型为 &Q
+map.get(&"key".to_string());
+map["key"];
+map[&"key".to_string()];
 // - Map-删除
-
+map.remove(&"key".to_string());
 // - Map-遍历
-
+for (key, value) in &map {
+    println!("{}: \"{}\"", key, value);
+}
 // - 结构-定义
-
+struct StructItem {
+    str: String,
+    i: u32
+}
+let str = String::from("123");
+let s = StructItem {
+    str,
+    i: 123
+}
+let s2 = StructItem {
+    i: 124,
+    ..s
+}
+// 元祖结构体
+struct T1(u32, u32)；
+let t = T1(1,2);
 // - 结构-获取属性值
-
+s2.str; // 123
+t.1; // 2
 // - 正则表达式-定义
 
 // - 正则表达式-是否匹配
 
 // - 正则表达式-匹配结果
-
+// - 条件
+// 条件可以忽略小括号
+if a > 0 {
+} else if (a < 0) {
+} else {
+}
+// 还能赋值，等同三元运算符
+let b = if (a > 0) { 1 } else { 0 }
 // - 循环-for
-
+let a = [10, 20, 30, 40, 50];
+for i in 0..5 {
+    println!("a[{}] = {}", i, a[i]);
+}
+for i in a.iter() {
+    println!("a[{}] = {}", i, a[i]);
+}
 // - 循环-while
+let mut number = 1;
+while number != 4 {
+    number += 1;
+}
+// 无限循环
 
+let mut i = 0;
+// 支持 break 出来的值赋值
+let num = loop {
+    if i == 10 {
+        break i;
+    }
+    i += 1;
+};
+num == 10;
 // - 选择-switch
-
+let num = 3;
+match num {
+    1|2=>println!("<3"),
+    3=>println!("=3"),
+    4..=20=> println!("4<= x <= 20"),
+    _=>println!("other"),
+}
 // - 方法-普通方法
 
 // - 方法-匿名方法
