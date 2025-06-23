@@ -298,9 +298,20 @@ for index, value := range arr {
 for val in arr.iter(){
     println!("value is :{}", val);
 }
-for index in 0..2 {
+// 迭代索引
+for index in 0..arr.len() {
     println!("index is: {} & value is : {}",index, arr[index]);
 }
+// 迭代值和索引
+for (index, value) in arr.iter().enumerate() {
+    println!("Index: {}, Value: {}", index, value);
+}
+// 内联
+let index_value_pairs: Vec<String> = arr
+        .iter()
+        .enumerate()
+        .map(|(index, value)| format!("Index: {}, Value: {}", index, value))
+        .collect();
 // 遍历 vector 数组
 for i in &mut varr {
     println!("{}", i);
@@ -487,13 +498,15 @@ const mapValue: string = map.get('a');
 
 ##### golang
 ```golang
-mapa["a"]
+value, existed := mapa["a"]
 ```
 
 ##### rust
 ```rust
 // get 的参数类型为 &Q
-map.get(&"key".to_string());
+if let Some(value) = map.get(&"key".to_string()) {
+    // do something
+}
 map["key"];
 map[&"key".to_string()];
 ```
@@ -997,7 +1010,9 @@ func sum(a int, b int) int {
 
 ##### rust
 ```rust
-
+pub fn sum(a: i32, b: i32) -> i32 {
+    a + b
+}
 ```
 
 ##### c++
@@ -1026,7 +1041,10 @@ sum := (a int, b int) int {
 
 ##### rust
 ```rust
-
+// 闭包
+let sum = |x: i32, y: i32| -> i32 {
+    x + y
+};
 ```
 
 ##### c++

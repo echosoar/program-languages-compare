@@ -187,9 +187,20 @@ arr.map((item: number, i: number) =&gt; {
 for val in arr.iter(){
     println!("value is :{}", val);
 }
-for index in 0..2 {
+// 迭代索引
+for index in 0..arr.len() {
     println!("index is: {} & value is : {}",index, arr[index]);
 }
+// 迭代值和索引
+for (index, value) in arr.iter().enumerate() {
+    println!("Index: {}, Value: {}", index, value);
+}
+// 内联
+let index_value_pairs: Vec&lt;String&gt; = arr
+        .iter()
+        .enumerate()
+        .map(|(index, value)| format!("Index: {}, Value: {}", index, value))
+        .collect();
 // 遍历 vector 数组
 for i in &mut varr {
     println!("{}", i);
@@ -262,8 +273,10 @@ result.second == 1;</code></pre></div></div></div></div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapalen = map.size;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapalen := len(mapa);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">map.len();</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int mapalen = mapa.size();</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">读取</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapValue: string = map.get('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">// get 的参数类型为 &Q
-map.get(&"key".to_string());
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapValue: string = map.get('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">value, existed := mapa["a"]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">// get 的参数类型为 &Q
+if let Some(value) = map.get(&"key".to_string()) {
+    // do something
+}
 map["key"];
 map[&"key".to_string()];</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 1. 直接读取
 mapa["a"]
@@ -519,7 +532,9 @@ if err != nil {
   return a + b;
 }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">func sum(a int, b int) int {
   return a + b;
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">pub fn sum(a: i32, b: i32) -&gt; i32 {
+    a + b
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 
 </code></pre></div></div></div></div>
     </div><div class="line">
@@ -528,7 +543,10 @@ if err != nil {
   return a + b;
 }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">sum := (a int, b int) int {
   return a + b;
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">// 闭包
+let sum = |x: i32, y: i32| -&gt; i32 {
+    x + y
+};</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
 
 </code></pre></div></div></div></div>
     </div><div class="line">

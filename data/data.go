@@ -47,7 +47,7 @@ mapa["a"] = "b";
 // - Map-长度
 mapalen := len(mapa);
 // - Map-读取
-mapa["a"]
+value, existed := mapa["a"]
 // - Map-删除
 delete(mapa, "a");
 // - Map-遍历
