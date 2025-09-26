@@ -44,13 +44,21 @@ let d: bool = false;
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 const int a = 123;
-int a(123); // C++
-int a{123}; // C++ 11
+int a(123);
+int a{123}; // C++11 brace initialization
 int a = {123};
 char b[] = "str";
+bool c = false;
+```
+
+##### c++23
+```c++23
+const int a = 123;
+int a{123}; // C++23 prefers brace initialization
+auto b = "str"; // C++23 auto deduction
 bool c = false;
 ```
 
@@ -78,10 +86,17 @@ const (
 let (a, b, c) = (42, "hello", 5.0);
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 int d = 1, e = 2;
 const int f = 1, g = 2;
+
+```
+
+##### c++23
+```c++23
+auto [d, e] = std::make_pair(1, 2); // C++17+ structured bindings
+const auto [f, g] = std::make_pair(1, 2);
 
 ```
 
@@ -107,8 +122,14 @@ const int f = 1, g = 2;
 /* 多行注释 */ 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// 单行注释
+/* 多行注释 */ 
+```
+
+##### c++23
+```c++23
 // 单行注释
 /* 多行注释 */ 
 ```
@@ -149,12 +170,20 @@ let str1 = r#"sam said: "xxx"."#
 let str1 = r###"##"###;
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 char str[4] = {"s", "t", "r", "\0"};
 char str[] = "str";
 // #include <string>
 std::string str = "str";
+
+```
+
+##### c++23
+```c++23
+using namespace std::string_literals;
+std::string str = "str"s;
+auto str2 = "str"sv; // string_view
 
 ```
 
@@ -179,9 +208,15 @@ let float64 = 2.0; // f64
 let float32: f32 = 3.0; // f32
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 int num = 123;
+```
+
+##### c++23
+```c++23
+int num = 123;
+auto num2 = 123; // C++23 auto
 ```
 
 
@@ -204,9 +239,16 @@ let c = true;
 let d: bool = false;
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 bool f = false;
+```
+
+##### c++23
+```c++23
+bool f = false;
+auto bf = false; // C++23 auto
+
 ```
 
 
@@ -241,10 +283,16 @@ let varr: Vec<i32> = Vec::new();
 ler mut varr = vec![1,2];
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 int arr[2] = {1, 2};
-int arr[] {1, 2};
+int arr[] = {1, 2}; // C++11 style
+```
+
+##### c++23
+```c++23
+std::array<int, 2> arr{1, 2}; // C++23 prefers std::array
+std::vector<int> vec{1, 2}; // C++23 modern approach
 ```
 
 
@@ -265,11 +313,17 @@ len(arr) == 2
 arr.len() == 2
 ```
 
-##### c++
-```c++
-sizeof arr /sizeof(arr[0]) == 2;
-// C++ 11
+##### c++11
+```c++11
+sizeof arr / sizeof(arr[0]) == 2;
+// C++11
 int length = std::end(arr) - std::begin(arr);
+```
+
+##### c++23
+```c++23
+arr.size() == 2;
+vec.size() == 2;
 ```
 
 
@@ -318,13 +372,26 @@ for i in &mut varr {
 }
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+int len = sizeof arr / sizeof arr[0];
 for (int index = 0; index < len; index ++) {
-  int value = arr[i];
+  int value = arr[index];
 }
-// C++ 11
+// C++11 range-based for loop
 for (auto value : arr) {}
+
+```
+
+##### c++23
+```c++23
+for (const auto& value : arr) {
+  // do something
+}
+// C++20+ ranges
+for (auto&& value : arr | std::views::filter([](int x) { return x > 0; })) {
+  // filtered iteration
+}
 
 ```
 
@@ -348,12 +415,21 @@ arr[0:1]
 &arr[0..=0];
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 int a[1];
 for (int index = 0, aIndex = 0; index < 1; index ++, aIndex ++) {
   a[aIndex] = arr[index];
 }
+```
+
+##### c++23
+```c++23
+// C++23 with ranges
+auto sliced = arr | std::views::take(1);
+// Traditional approach
+std::vector<int> a(arr.begin(), arr.begin() + 1);
+
 ```
 
 
@@ -387,15 +463,24 @@ let va = vec!["1","2","3"];
 va.join("-");
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 // #include <sstream>
-
 std::stringstream ss;
 int len = sizeof a / sizeof a[0];
 for(int i = 0; i < len; i ++) {
    ss << a[i] << (i < len - 1 ? ".": "");
 }
+
+```
+
+##### c++23
+```c++23
+// C++23 with ranges and format
+std::string result = std::format("{}", fmt::join(arr, "."));
+// Alternative with stringstream
+std::stringstream ss;
+std::copy(arr.begin(), arr.end(), std::ostream_iterator<int>(ss, "."));
 
 ```
 
@@ -425,11 +510,20 @@ let mut map2 = HashMap::from([
 ])
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 // #include <map>
-typedef std::map<std::string, std::string> STR_MAP;
-STR_MAP mapa;
+std::map<std::string, std::string> mapa;
+// C++11 initializer list
+std::map<std::string, std::string> mapa = {{"key1", "value1"}, {"key2", "value2"}};
+```
+
+##### c++23
+```c++23
+std::unordered_map<std::string, std::string> mapa{
+  {"key1", "value1"}, 
+  {"key2", "value2"}
+}; // C++23 prefers unordered_map for performance
 ```
 
 
@@ -453,16 +547,20 @@ map.insert(
 );
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 // 1. 直接设置，可覆盖
 mapa["a"] = "b";
-
 // 2. insert，当已存在key，则失败
 // #include <utility>
-std::pair<STR_MAP::iterator, bool> Pair;
-Pair result = mapa.insert(STR_MAP::value_type("a", "b"));
-result.second == 1;
+auto result = mapa.insert(std::make_pair("a", "b"));
+result.second == true;
+```
+
+##### c++23
+```c++23
+mapa["a"] = "b";
+mapa.insert_or_assign("a", "b"); // C++17+
 ```
 
 
@@ -483,9 +581,14 @@ mapalen := len(mapa);
 map.len();
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 int mapalen = mapa.size();
+```
+
+##### c++23
+```c++23
+auto mapSize = mapa.size();
 ```
 
 
@@ -511,15 +614,25 @@ map["key"];
 map[&"key".to_string()];
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 // 1. 直接读取
-mapa["a"]
+mapa["a"];
 // 2. 通过迭代器来读取
-MAP_STR::iterator ite = mapa.find("c");
+auto ite = mapa.find("c");
 if (ite != mapa.end()) {
   std::string key = ite->first;
   std::string value = ite->second;
+}
+
+```
+
+##### c++23
+```c++23
+auto value = mapa["a"];
+// C++23 modern approach with optional
+if (auto it = mapa.find("c"); it != mapa.end()) {
+  auto [key, value] = *it; // C++17+ structured bindings
 }
 
 ```
@@ -542,17 +655,19 @@ delete(mapa, "a");
 map.remove(&"key".to_string());
 ```
 
-##### c++
-```c++
-
+##### c++11
+```c++11
 // 1. 用关键字刪除
-// 如果刪除了會返回1，否則返回0
 int n = mapa.erase("a");
-
 // 2. 用迭代器刪除
-MAP_STR::iterator iter = mapa.find("c");
+auto iter = mapa.find("c");
 mapa.erase(iter);
 
+```
+
+##### c++23
+```c++23
+mapa.erase("a");
 ```
 
 
@@ -577,13 +692,24 @@ for (key, value) in &map {
 }
 ```
 
-##### c++
-```c++
-MAP_STR::iterator iter = mapa.begin();
-while(iter != mapa.end()) {
-  std::string key = ite->first;
-  std::string value = ite->second;
-  iter ++;
+##### c++11
+```c++11
+for (auto iter = mapa.begin(); iter != mapa.end(); ++iter) {
+  std::string key = iter->first;
+  std::string value = iter->second;
+}
+// C++11 range-based for loop
+for (const auto& pair : mapa) {
+  std::string key = pair.first;
+  std::string value = pair.second;
+}
+
+```
+
+##### c++23
+```c++23
+for (const auto& [key, value] : mapa) { // C++17+ structured bindings
+  // do something
 }
 
 ```
@@ -630,16 +756,30 @@ struct T1(u32, u32)；
 let t = T1(1,2);
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 struct STR {
   std::string name;
   int age;
 };
 
 struct STR obj = { "test", 20 };
-// 也可以忽略struct 和 等号
+// C++11 uniform initialization
 STR obj { "test", 20 };
+
+```
+
+##### c++23
+```c++23
+struct STR {
+  std::string name;
+  int age;
+  
+  // C++20+ spaceship operator
+  auto operator<=>(const STR&) const = default;
+};
+
+STR obj{"test", 20}; // C++23 aggregate initialization
 
 ```
 
@@ -666,9 +806,17 @@ s2.str; // 123
 t.1; // 2
 ```
 
-##### c++
-```c++
-// 不支持
+##### c++11
+```c++11
+obj.name; // "test"
+obj.age;  // 20
+
+```
+
+##### c++23
+```c++23
+obj.name; // "test"
+obj.age;  // 20
 
 ```
 
@@ -689,13 +837,21 @@ reg, _ := regexp.Compile("(?i)a");
 
 ##### rust
 ```rust
+// 需要添加依赖 regex = "1"
+use regex::Regex;
+let reg = Regex::new(r"(a|b)").unwrap();
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 // #include <regex>
-std::regex reg("a", std::regex_constants::icase);
+std::regex reg("(a|b)", std::regex_constants::icase);
+```
+
+##### c++23
+```c++23
+std::regex reg{R"((a|b))", std::regex_constants::icase};
 ```
 
 
@@ -717,11 +873,18 @@ match, _ := reg.MatchString("A");
 
 ##### rust
 ```rust
+let is_match = reg.is_match("A");
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+std::string s = "A";
+bool match = std::regex_search(s, reg);
+```
+
+##### c++23
+```c++23
 std::string s = "A";
 bool match = std::regex_search(s, reg);
 ```
@@ -756,23 +919,75 @@ index := indexRes[0]
 
 ##### rust
 ```rust
-
+let text = "abcd";
+if let Some(caps) = reg.captures(text) {
+    let full_match = &caps[0]; // "ab"
+    let capture1 = &caps[1]; // "a"
+}
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 std::smatch submatch;
-std::regex_match(s, submatch, reg);
+std::regex_search(s, submatch, reg);
 std::ssub_match matchRes = submatch[0];
 std::string match = matchRes.str();
-// match === 'ab'
-std::ssub_match capture1Res = submatch[1];
-std::string capture1Res = capture1Res.str();
-// capture1 === 'b'
+// match === 'A'
+```
+
+##### c++23
+```c++23
+std::smatch submatch;
+std::regex_search(s, submatch, reg);
+auto matchRes = submatch[0];
+std::string match = matchRes.str();
+
 ```
 
 
 ### 枚举
+
+##### rust
+```rust
+enum Color {
+    Red,
+    Green,
+    Blue,
+}
+// 带值的枚举
+enum Status {
+    Success = 0,
+    Error = 1,
+}
+let color = Color::Red;
+let status = Status::Success;
+
+```
+
+##### c++11
+```c++11
+enum class Color : int {
+  RED = 1,
+  GREEN = 2,
+  BLUE = 3
+};
+Color color = Color::RED;
+
+```
+
+##### c++23
+```c++23
+enum class Color : int {
+  RED = 1,
+  GREEN = 2,
+  BLUE = 3
+};
+Color color = Color::RED;
+// C++23 enhanced enums
+using enum Color;
+auto red = RED; // Can use unqualified name
+
+```
 
 
 ## 语句
@@ -804,10 +1019,23 @@ if a > 0 {
 let b = if (a > 0) { 1 } else { 0 }
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+if (true) {
+} else if (false) {
+} else { }
 
+```
 
+##### c++23
+```c++23
+if (true) {
+} else if (false) {
+} else { }
+// C++17+ if with initializer
+if (auto value = getValue(); value > 0) {
+  // use value
+}
 
 ```
 
@@ -856,17 +1084,30 @@ for i in a.iter() {
 }
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
 // 普通for循环
-
+for(int i = 0; i < 10; i++) { }
 // 仅判断
-
+for(; rand() % 2 == 0;) {}
 // 无限循环
-
+for(;;) {}
 // 遍历索引
+int len = sizeof arr / sizeof arr[0];
+for(int index = 0; index < len; index++) { }
+// 遍历元素 (C++11)
+for(auto value : arr) {}
 
-// 遍历元素
+```
+
+##### c++23
+```c++23
+// Range-based for loop (preferred in C++23)
+for (const auto& item : container) { }
+// Traditional for loop
+for (int i = 0; i < 10; i++) { }
+// C++20+ ranges
+for (auto i : std::views::iota(0, 10)) { }
 
 ```
 
@@ -902,8 +1143,15 @@ let num = loop {
 num == 10;
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+while(rand() % 2 == 0) {}
+
+```
+
+##### c++23
+```c++23
+while (condition()) {}
 
 ```
 
@@ -944,14 +1192,38 @@ match num {
 }
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+switch(value) {
+  case 1:
+  case 2:
+    // < 3
+    break;
+  case 3:
+    // = 3
+    break;
+  default:
+    // other
+    break;
+}
 
+```
 
-
-
-
-
+##### c++23
+```c++23
+// C++17+ switch with initializer
+switch (auto value = getValue(); value) {
+  case 1:
+  case 2:
+    // < 3
+    break;
+  case 3:
+    // = 3
+    break;
+  default:
+    // other
+    break;
+}
 
 ```
 
@@ -977,13 +1249,44 @@ if err != nil {
 
 ```
 
-##### c++
-```c++
+##### rust
+```rust
+// Rust uses Result<T, E> instead of exceptions
+fn might_fail() -> Result<i32, String> {
+    if true {
+        Ok(42)
+    } else {
+        Err("Something went wrong".to_string())
+    }
+}
 
+match might_fail() {
+    Ok(value) => println!("Success: {}", value),
+    Err(e) => println!("Error: {}", e),
+}
 
+```
 
+##### c++11
+```c++11
+try {
+  // code that might throw
+} catch (const std::exception& e) {
+  // handle exception
+} catch (...) {
+  // handle any other exception
+}
 
+```
 
+##### c++23
+```c++23
+try {
+  // code that might throw
+} catch (const std::exception& e) {
+  // C++23 format
+  std::cout << std::format("Error: {}\n", e.what());
+}
 
 ```
 
@@ -1015,10 +1318,24 @@ pub fn sum(a: i32, b: i32) -> i32 {
 }
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+int sum(int a, int b) {
+  return a + b;
+}
 
+```
 
+##### c++23
+```c++23
+auto sum(int a, int b) -> int { // C++23 trailing return type
+  return a + b;
+}
+// C++20+ concepts
+template<std::integral T>
+auto sum(T a, T b) -> T {
+  return a + b;
+}
 
 ```
 
@@ -1047,10 +1364,24 @@ let sum = |x: i32, y: i32| -> i32 {
 };
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// C++11 lambda
+auto sumFun = [](int a, int b) -> int {
+  return a + b;
+};
 
+```
 
+##### c++23
+```c++23
+auto sumFun = [](int a, int b) -> int {
+  return a + b;
+};
+// C++23 with auto parameters
+auto sumFun2 = [](auto a, auto b) {
+  return a + b;
+};
 
 ```
 
@@ -1075,14 +1406,31 @@ let sum = |x: i32, y: i32| -> i32 {
 
 ##### rust
 ```rust
+// Rust doesn't have traditional IIFE, but can use closures
+let result = (|a: i32, b: i32| -> i32 {
+    a + b
+})(1, 2);
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// C++11 lambda IIFE
+int result = [](int a, int b) -> int {
+  return a + b;
+}(1, 2);
 
+```
 
-
+##### c++23
+```c++23
+auto result = [](int a, int b) -> int {
+  return a + b;
+}(1, 2);
+// C++23 with immediate invocation
+auto result2 = []<typename T>(T a, T b) {
+  return a + b;
+}.template operator()<int>(1, 2);
 
 ```
 
@@ -1114,18 +1462,49 @@ func (a *A) log { }
 
 ##### rust
 ```rust
+struct Person {
+    name: String,
+    age: i32,
+}
+
+impl Person {
+    fn new(name: String, age: i32) -> Person {
+        Person { name, age }
+    }
+    
+    fn greet(&self) {
+        println!("Hello, I'm {}", self.name);
+    }
+}
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+class A {
+private:
+  int value;
+public:
+  A(int v) : value(v) {}
+  int getValue() const { return value; }
+  void setValue(int v) { value = v; }
+};
 
+```
 
-
-
-
-
-
+##### c++23
+```c++23
+class A {
+private:
+  int value_;
+public:
+  explicit A(int v) : value_(v) {}
+  [[nodiscard]] auto getValue() const noexcept -> int { return value_; }
+  auto setValue(int v) noexcept -> void { value_ = v; }
+  
+  // C++20+ spaceship operator
+  auto operator<=>(const A&) const = default;
+};
 
 ```
 
@@ -1153,15 +1532,40 @@ func (b *B) method() {
 
 ##### rust
 ```rust
+// Rust doesn't have traditional inheritance, uses traits instead
+trait Animal {
+    fn make_sound(&self);
+}
+
+struct Dog {
+    name: String,
+}
+
+impl Animal for Dog {
+    fn make_sound(&self) {
+        println!("Woof!");
+    }
+}
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+class B : public A {
+public:
+  B(int v) : A(v) {}
+  void doSomething() { }
+};
 
+```
 
-
-
+##### c++23
+```c++23
+class B : public A {
+public:
+  explicit B(int v) : A(v) {}
+  auto doSomething() -> void { }
+};
 
 ```
 
@@ -1185,12 +1589,22 @@ b := B{
 
 ##### rust
 ```rust
+let person = Person::new("Alice".to_string(), 30);
+let dog = Dog { name: "Buddy".to_string() };
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+A instance(123);
+A* instancePtr = new A(123);
 
+```
+
+##### c++23
+```c++23
+auto instance = A{123}; // C++23 preferred style
+std::unique_ptr<A> instancePtr = std::make_unique<A>(123);
 
 ```
 
@@ -1234,23 +1648,53 @@ type JStruct struct {
 
 ##### rust
 ```rust
+// 需要添加依赖 serde = { version = "1.0", features = ["derive"] }
+// serde_json = "1.0"
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize)]
+struct JsonData {
+    name: String,
+    values: Vec<i32>,
+    obj: JsonObject,
+}
+
+#[derive(Serialize, Deserialize)]
+struct JsonObject {
+    name: String,
+    age: i32,
+}
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// C++ doesn't have built-in JSON support
+// Need external library like nlohmann/json
+// Example with manual string creation:
+std::string jsonStr = R"({
+  "name": "example",
+  "values": [1, 2, 3],
+  "obj": {
+    "name": "name",
+    "age": 12
+  }
+})";
 
+```
 
-
-
-
-
-
-
-
-
-
-
+##### c++23
+```c++23
+// C++23 still requires external library like nlohmann/json
+// Using raw string literal
+auto jsonStr = R"({
+  "name": "example",
+  "values": [1, 2, 3],
+  "obj": {
+    "name": "name",
+    "age": 12
+  }
+})"s;
 
 ```
 
@@ -1275,13 +1719,32 @@ jsonStr, _ := json.Marshal(a)
 
 ##### rust
 ```rust
+use serde_json;
+let data = JsonData {
+    name: "example".to_string(),
+    values: vec![1, 2, 3],
+    obj: JsonObject {
+        name: "name".to_string(),
+        age: 12,
+    },
+};
+let json_str = serde_json::to_string(&data).unwrap();
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// Using manual string construction
+std::ostringstream oss;
+oss << "{\"name\":" << 123 << "}";
+std::string jsonStr = oss.str();
 
+```
 
+##### c++23
+```c++23
+// C++23 with format library
+auto jsonStr = std::format(R"({{"name":{}}})", 123);
 
 ```
 
@@ -1305,12 +1768,22 @@ json.Unmarshal(strBytes, &jsonStruct);
 
 ##### rust
 ```rust
+let json_str = r#"{"name": 123}"#;
+let value: serde_json::Value = serde_json::from_str(json_str).unwrap();
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// Manual parsing required or use library
+// Example would require external JSON library
 
+```
+
+##### c++23
+```c++23
+// Still requires external library
+// nlohmann::json j = nlohmann::json::parse(jsonStr);
 
 ```
 
@@ -1332,11 +1805,28 @@ time.Now().Unix();
 
 ##### rust
 ```rust
+use std::time::{SystemTime, UNIX_EPOCH};
+let timestamp = SystemTime::now()
+    .duration_since(UNIX_EPOCH)
+    .unwrap()
+    .as_millis();
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// #include <chrono>
+auto now = std::chrono::system_clock::now();
+auto timestamp = std::chrono::duration_cast<std::chrono::milliseconds>(
+  now.time_since_epoch()).count();
+
+```
+
+##### c++23
+```c++23
+auto now = std::chrono::system_clock::now();
+auto timestamp = std::chrono::duration_cast<std::chrono::milliseconds>(
+  now.time_since_epoch()).count();
 
 ```
 
@@ -1370,18 +1860,43 @@ int(now.Second()); // 秒，有小数
 
 ##### rust
 ```rust
+use chrono::{DateTime, Local};
+let now: DateTime<Local> = Local::now();
+let year = now.year();
+let month = now.month();
+let day = now.day();
+let hour = now.hour();
+let minute = now.minute();
+let second = now.second();
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// #include <ctime>
+std::time_t t = std::time(nullptr);
+std::tm* tm = std::localtime(&t);
+int year = tm->tm_year + 1900;
+int month = tm->tm_mon + 1;
+int day = tm->tm_mday;
+int hour = tm->tm_hour;
+int minute = tm->tm_min;
+int second = tm->tm_sec;
 
+```
 
-
-
-
-
-
+##### c++23
+```c++23
+// C++20+ chrono improvements
+auto now = std::chrono::system_clock::now();
+auto time_t = std::chrono::system_clock::to_time_t(now);
+auto tm = *std::localtime(&time_t);
+auto year = tm.tm_year + 1900;
+auto month = tm.tm_mon + 1;
+auto day = tm.tm_mday;
+auto hour = tm.tm_hour;
+auto minute = tm.tm_min;
+auto second = tm.tm_sec;
 
 ```
 
@@ -1403,11 +1918,19 @@ _, filename, _, _ := runtime.Caller(1)
 
 ##### rust
 ```rust
+file!()
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+__FILE__
+
+```
+
+##### c++23
+```c++23
+std::source_location::current().file_name(); // C++20+
 
 ```
 
@@ -1431,11 +1954,21 @@ dirname := path.Dir(filename)
 
 ##### rust
 ```rust
+// 需要 std::env
+use std::env;
+let current_dir = env::current_dir().unwrap();
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// Need to use filesystem library or platform-specific code
+
+```
+
+##### c++23
+```c++23
+std::filesystem::current_path(); // C++17+
 
 ```
 
@@ -1455,11 +1988,21 @@ dir, _ := os.Getwd() 
 
 ##### rust
 ```rust
+let current_dir = env::current_dir().unwrap();
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// #include <unistd.h>
+char cwd[1024];
+getcwd(cwd, sizeof(cwd));
+
+```
+
+##### c++23
+```c++23
+std::filesystem::current_path();
 
 ```
 
@@ -1479,11 +2022,26 @@ os.Getenv("ENV_NAME")
 
 ##### rust
 ```rust
+let env_var = env::var("ENV_NAME").unwrap_or_default();
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// #include <cstdlib>
+const char* env = std::getenv("ENV_NAME");
+
+```
+
+##### c++23
+```c++23
+// C++23 with expected
+std::expected<std::string, int> getEnv(const std::string& name) {
+  if (auto env = std::getenv(name.c_str())) {
+    return std::string{env};
+  }
+  return std::unexpected{-1};
+}
 
 ```
 
@@ -1503,11 +2061,22 @@ os.Args
 
 ##### rust
 ```rust
+use std::env;
+let args: Vec<String> = env::args().collect();
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// int main(int argc, char* argv[])
+// argc, argv
+
+```
+
+##### c++23
+```c++23
+// int main(int argc, char* argv[])
+// std::span<char*> args{argv, static_cast<size_t>(argc)}; // C++20+
 
 ```
 
@@ -1527,11 +2096,21 @@ os.Getpid()
 
 ##### rust
 ```rust
+use std::process;
+let pid = process::id();
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// #include <unistd.h>
+pid_t pid = getpid();
+
+```
+
+##### c++23
+```c++23
+// Still platform-specific, no standard solution
 
 ```
 
@@ -1551,11 +2130,20 @@ os.Exit(signal)
 
 ##### rust
 ```rust
+process::exit(0);
 
 ```
 
-##### c++
-```c++
+##### c++11
+```c++11
+// #include <cstdlib>
+std::exit(0);
+
+```
+
+##### c++23
+```c++23
+std::exit(0);
 
 ```
 
@@ -1575,12 +2163,21 @@ fmt.Println
 
 ##### rust
 ```rust
-
+println!("value");
+print!("value");
+eprintln!("error message");
 ```
 
-##### c++
-```c++
-// include <iostream>
-std::cout << value << std::endl;
+##### c++11
+```c++11
+// #include <iostream>
+std::cout << "value" << std::endl;
+```
 
+##### c++23
+```c++23
+// C++23 with print
+std::print("value\n"); // C++23
+// Alternative
+std::cout << "value\n";
 ```

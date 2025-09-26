@@ -11,8 +11,12 @@ const languageMap = {
       lang: 'Rust',
       play: 'https://play.rust-lang.org/',
     },
-    cpp: {
-      lang: 'C++',
+    cpp11: {
+      lang: 'C++11',
+      play: 'https://www.onlinegdb.com/online_c++_compiler',
+    },
+    cpp23: {
+      lang: 'C++23',
       play: 'https://www.onlinegdb.com/online_c++_compiler',
     }
   };

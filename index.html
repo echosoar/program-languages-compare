@@ -63,7 +63,7 @@
     <div class="container">
       <div class="line">
         <div class="headTitle">多语言速查表</div>
-        <div class="langTitle">TypeScript <a href="https://www.typescriptlang.org/play" target="_blank">Play</a></div><div class="langTitle">Golang <a href="https://go.dev/play/" target="_blank">Play</a></div><div class="langTitle">Rust <a href="https://play.rust-lang.org/" target="_blank">Play</a></div><div class="langTitle">C++ <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank">Play</a></div>
+        <div class="langTitle">TypeScript <a href="https://www.typescriptlang.org/play" target="_blank">Play</a></div><div class="langTitle">Golang <a href="https://go.dev/play/" target="_blank">Play</a></div><div class="langTitle">Rust <a href="https://play.rust-lang.org/" target="_blank">Play</a></div><div class="langTitle">C++11 <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank">Play</a></div><div class="langTitle">C++23 <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank">Play</a></div>
       </div>
       <div class="line">
       <div class="class" style="">基本概念</div>
@@ -87,11 +87,14 @@ let mut ma = 1;
 const b = "str"
 let c = true;
 let d: bool = false;
-</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">const int a = 123;
-int a(123); // C++
-int a{123}; // C++ 11
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">const int a = 123;
+int a(123);
+int a{123}; // C++11 brace initialization
 int a = {123};
 char b[] = "str";
+bool c = false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">const int a = 123;
+int a{123}; // C++23 prefers brace initialization
+auto b = "str"; // C++23 auto deduction
 bool c = false;</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">多个变量</div>
@@ -101,8 +104,10 @@ const (
   a = 1
   b = 2
   c = 3
-)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">let (a, b, c) = (42, "hello", 5.0);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int d = 1, e = 2;
+)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">let (a, b, c) = (42, "hello", 5.0);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">int d = 1, e = 2;
 const int f = 1, g = 2;
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">auto [d, e] = std::make_pair(1, 2); // C++17+ structured bindings
+const auto [f, g] = std::make_pair(1, 2);
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -111,7 +116,8 @@ const int f = 1, g = 2;
 /* 多行注释 */ </code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">// 单行注释
 /* 多行注释 */ </code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">// 单行注释
 /// 三个反斜也可以
-/* 多行注释 */ </code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 单行注释
+/* 多行注释 */ </code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// 单行注释
+/* 多行注释 */ </code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">// 单行注释
 /* 多行注释 */ </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -134,22 +140,28 @@ let str1 = "\"test\"";
 // 如果不想转义，可以使用 原始字符串
 let str1 = r#"sam said: "xxx"."#
 // 如果原始字符串中出现 #，两侧需要更多的 #
-let str1 = r###"##"###;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">char str[4] = {"s", "t", "r", "\0"};
+let str1 = r###"##"###;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">char str[4] = {"s", "t", "r", "\0"};
 char str[] = "str";
 // #include &lt;string&gt;
 std::string str = "str";
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">using namespace std::string_literals;
+std::string str = "str"s;
+auto str2 = "str"sv; // string_view
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">数字</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">let num: number = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var num int = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">let num = 123; // i32
 let num64: i64 = 123;
 let float64 = 2.0; // f64
-let float32: f32 = 3.0; // f32</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int num = 123;</code></pre></div></div></div></div>
+let float32: f32 = 3.0; // f32</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">int num = 123;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">int num = 123;
+auto num2 = 123; // C++23 auto</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">布尔值</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const bf: boolean = false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">var f bool = false;
 f := false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">let c = true;
-let d: bool = false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">bool f = false;</code></pre></div></div></div></div>
+let d: bool = false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">bool f = false;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">bool f = false;
+auto bf = false; // C++23 auto
+</code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">数组</div>
@@ -167,13 +179,15 @@ let arr: [i32;2] = [-1;2];
 // 可变长数组 vector
 let varr: Vec&lt;i32&gt; = Vec::new();
 // rust 提供了宏 vec! 根据值创建 vector
-ler mut varr = vec![1,2];</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int arr[2] = {1, 2};
-int arr[] {1, 2};</code></pre></div></div></div></div>
+ler mut varr = vec![1,2];</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">int arr[2] = {1, 2};
+int arr[] = {1, 2}; // C++11 style</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">std::array&lt;int, 2&gt; arr{1, 2}; // C++23 prefers std::array
+std::vector&lt;int&gt; vec{1, 2}; // C++23 modern approach</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">获取长度</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.length === 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">len(arr) == 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">arr.len() == 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">sizeof arr /sizeof(arr[0]) == 2;
-// C++ 11
-int length = std::end(arr) - std::begin(arr);</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.length === 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">len(arr) == 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">arr.len() == 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">sizeof arr / sizeof(arr[0]) == 2;
+// C++11
+int length = std::end(arr) - std::begin(arr);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">arr.size() == 2;
+vec.size() == 2;</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">遍历</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.forEach((item: number, i: number) =&gt; {
@@ -204,20 +218,32 @@ let index_value_pairs: Vec&lt;String&gt; = arr
 // 遍历 vector 数组
 for i in &mut varr {
     println!("{}", i);
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">for (int index = 0; index &lt; len; index ++) {
-  int value = arr[i];
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">int len = sizeof arr / sizeof arr[0];
+for (int index = 0; index &lt; len; index ++) {
+  int value = arr[index];
 }
-// C++ 11
+// C++11 range-based for loop
 for (auto value : arr) {}
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">for (const auto& value : arr) {
+  // do something
+}
+// C++20+ ranges
+for (auto&& value : arr | std::views::filter([](int x) { return x &gt; 0; })) {
+  // filtered iteration
+}
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">截取</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">arr.slice(0, 1)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">arr[0:1]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">&arr[0..1];
 // 包含结尾元素需要加 =
-&arr[0..=0];</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int a[1];
+&arr[0..=0];</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">int a[1];
 for (int index = 0, aIndex = 0; index &lt; 1; index ++, aIndex ++) {
   a[aIndex] = arr[index];
-}</code></pre></div></div></div></div>
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">// C++23 with ranges
+auto sliced = arr | std::views::take(1);
+// Traditional approach
+std::vector&lt;int&gt; a(arr.begin(), arr.begin() + 1);
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">连接</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">var strArr: string[] = ['a', 'b'];
@@ -233,13 +259,17 @@ strings.Join(strArr, ",");</code></pre></div></div><div class="lang"><div class=
 // Vec&lt;String&gt; Join(&str)
 let va = vec!["1","2","3"];
 // 1-2-3
-va.join("-");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;sstream&gt;
-
+va.join("-");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// #include &lt;sstream&gt;
 std::stringstream ss;
 int len = sizeof a / sizeof a[0];
 for(int i = 0; i &lt; len; i ++) {
    ss &lt;&lt; a[i] &lt;&lt; (i &lt; len - 1 ? ".": "");
 }
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">// C++23 with ranges and format
+std::string result = std::format("{}", fmt::join(arr, "."));
+// Alternative with stringstream
+std::stringstream ss;
+std::copy(arr.begin(), arr.end(), std::ostream_iterator&lt;int&gt;(ss, "."));
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -252,25 +282,28 @@ let mut map = HashMap::new();
 let mut map2 = HashMap::from([
     ("key1", "value1"),
     ("key2", "value2"),
-])</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;map&gt;
-typedef std::map&lt;std::string, std::string&gt; STR_MAP;
-STR_MAP mapa;</code></pre></div></div></div></div>
+])</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// #include &lt;map&gt;
+std::map&lt;std::string, std::string&gt; mapa;
+// C++11 initializer list
+std::map&lt;std::string, std::string&gt; mapa = {{"key1", "value1"}, {"key2", "value2"}};</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">std::unordered_map&lt;std::string, std::string&gt; mapa{
+  {"key1", "value1"}, 
+  {"key2", "value2"}
+}; // C++23 prefers unordered_map for performance</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">设置</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map = map.set('a', 'b');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapa["a"] = "b";</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">map.insert(
     "key".to_string(),
     "value"
-);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 1. 直接设置，可覆盖
+);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// 1. 直接设置，可覆盖
 mapa["a"] = "b";
-
 // 2. insert，当已存在key，则失败
 // #include &lt;utility&gt;
-std::pair&lt;STR_MAP::iterator, bool&gt; Pair;
-Pair result = mapa.insert(STR_MAP::value_type("a", "b"));
-result.second == 1;</code></pre></div></div></div></div>
+auto result = mapa.insert(std::make_pair("a", "b"));
+result.second == true;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">mapa["a"] = "b";
+mapa.insert_or_assign("a", "b"); // C++17+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">长度</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapalen = map.size;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapalen := len(mapa);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">map.len();</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">int mapalen = mapa.size();</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapalen = map.size;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">mapalen := len(mapa);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">map.len();</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">int mapalen = mapa.size();</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">auto mapSize = mapa.size();</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">读取</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const mapValue: string = map.get('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">value, existed := mapa["a"]</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">// get 的参数类型为 &Q
@@ -278,37 +311,45 @@ if let Some(value) = map.get(&"key".to_string()) {
     // do something
 }
 map["key"];
-map[&"key".to_string()];</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 1. 直接读取
-mapa["a"]
+map[&"key".to_string()];</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// 1. 直接读取
+mapa["a"];
 // 2. 通过迭代器来读取
-MAP_STR::iterator ite = mapa.find("c");
+auto ite = mapa.find("c");
 if (ite != mapa.end()) {
   std::string key = ite-&gt;first;
   std::string value = ite-&gt;second;
 }
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">auto value = mapa["a"];
+// C++23 modern approach with optional
+if (auto it = mapa.find("c"); it != mapa.end()) {
+  auto [key, value] = *it; // C++17+ structured bindings
+}
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">删除</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map.delete('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">delete(mapa, "a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">map.remove(&"key".to_string());</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
-// 1. 用关键字刪除
-// 如果刪除了會返回1，否則返回0
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">map.delete('a');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">delete(mapa, "a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">map.remove(&"key".to_string());</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// 1. 用关键字刪除
 int n = mapa.erase("a");
-
 // 2. 用迭代器刪除
-MAP_STR::iterator iter = mapa.find("c");
+auto iter = mapa.find("c");
 mapa.erase(iter);
-</code></pre></div></div></div></div>
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">mapa.erase("a");</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">遍历</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">for (let [key, value] of map) {
    // do something
 }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">for key, value := range mapa {}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">for (key, value) in &map {
     println!("{}: \"{}\"", key, value);
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">MAP_STR::iterator iter = mapa.begin();
-while(iter != mapa.end()) {
-  std::string key = ite-&gt;first;
-  std::string value = ite-&gt;second;
-  iter ++;
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">for (auto iter = mapa.begin(); iter != mapa.end(); ++iter) {
+  std::string key = iter-&gt;first;
+  std::string value = iter-&gt;second;
+}
+// C++11 range-based for loop
+for (const auto& pair : mapa) {
+  std::string key = pair.first;
+  std::string value = pair.second;
+}
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">for (const auto& [key, value] : mapa) { // C++17+ structured bindings
+  // do something
 }
 </code></pre></div></div></div></div>
     </div></div>
@@ -338,14 +379,23 @@ let s2 = StructItem {
 }
 // 元祖结构体
 struct T1(u32, u32)；
-let t = T1(1,2);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">struct STR {
+let t = T1(1,2);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">struct STR {
   std::string name;
   int age;
 };
 
 struct STR obj = { "test", 20 };
-// 也可以忽略struct 和 等号
+// C++11 uniform initialization
 STR obj { "test", 20 };
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">struct STR {
+  std::string name;
+  int age;
+  
+  // C++20+ spaceship operator
+  auto operator&lt;=&gt;(const STR&) const = default;
+};
+
+STR obj{"test", 20}; // C++23 aggregate initialization
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">获取属性值</div>
@@ -354,22 +404,30 @@ STR obj { "test", 20 };
 for i := 0; i &lt; t.NumField(); i++ {
   t.Field(i).Name;
 }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">s2.str; // 123
-t.1; // 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 不支持
+t.1; // 2</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">obj.name; // "test"
+obj.age;  // 20
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">obj.name; // "test"
+obj.age;  // 20
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">正则表达式</div>
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">定义</div>
-      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const reg: RegExp = /a(b)/i;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">reg, _ := regexp.Compile("(?i)a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// #include &lt;regex&gt;
-std::regex reg("a", std::regex_constants::icase);</code></pre></div></div></div></div>
+      <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const reg: RegExp = /a(b)/i;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">reg, _ := regexp.Compile("(?i)a");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">// 需要添加依赖 regex = "1"
+use regex::Regex;
+let reg = Regex::new(r"(a|b)").unwrap();
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// #include &lt;regex&gt;
+std::regex reg("(a|b)", std::regex_constants::icase);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">std::regex reg{R"((a|b))", std::regex_constants::icase};</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">是否匹配</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const isMatch: boolean = reg.test('A');</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">// 1. 直接匹配
 match, _ := regexp.MatchString("(?i)a","A");
 // 2. 先定义，后匹配
 reg, _ := regexp.Compile("(?i)a");
-match, _ := reg.MatchString("A");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">std::string s = "A";
+match, _ := reg.MatchString("A");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">let is_match = reg.is_match("A");
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">std::string s = "A";
+bool match = std::regex_search(s, reg);</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">std::string s = "A";
 bool match = std::regex_search(s, reg);</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">匹配结果</div>
@@ -388,18 +446,50 @@ capture1 := res[1];
 indexRes := reg.FindStringIndex("abcd");
 index := indexRes[0]
 // index === 0
-</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">std::smatch submatch;
-std::regex_match(s, submatch, reg);
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">let text = "abcd";
+if let Some(caps) = reg.captures(text) {
+    let full_match = &caps[0]; // "ab"
+    let capture1 = &caps[1]; // "a"
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">std::smatch submatch;
+std::regex_search(s, submatch, reg);
 std::ssub_match matchRes = submatch[0];
 std::string match = matchRes.str();
-// match === 'ab'
-std::ssub_match capture1Res = submatch[1];
-std::string capture1Res = capture1Res.str();
-// capture1 === 'b'</code></pre></div></div></div></div>
+// match === 'A'</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">std::smatch submatch;
+std::regex_search(s, submatch, reg);
+auto matchRes = submatch[0];
+std::string match = matchRes.str();
+</code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 101px">枚举</div>
-      <div class="child"><div class="line"><div class="lang"></div><div class="lang"></div><div class="lang"></div><div class="lang"></div></div></div>
+      <div class="child"><div class="line"><div class="lang"></div><div class="lang"></div><div class="lang"><div class="code"><pre><code class="rust">enum Color {
+    Red,
+    Green,
+    Blue,
+}
+// 带值的枚举
+enum Status {
+    Success = 0,
+    Error = 1,
+}
+let color = Color::Red;
+let status = Status::Success;
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">enum class Color : int {
+  RED = 1,
+  GREEN = 2,
+  BLUE = 3
+};
+Color color = Color::RED;
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">enum class Color : int {
+  RED = 1,
+  GREEN = 2,
+  BLUE = 3
+};
+Color color = Color::RED;
+// C++23 enhanced enums
+using enum Color;
+auto red = RED; // Can use unqualified name
+</code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">语句</div>
@@ -415,8 +505,16 @@ if a &gt; 0 {
 } else {
 }
 // 还能赋值，等同三元运算符
-let b = if (a &gt; 0) { 1 } else { 0 }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
-
+let b = if (a &gt; 0) { 1 } else { 0 }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">if (true) {
+} else if (false) {
+} else { }
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">if (true) {
+} else if (false) {
+} else { }
+// C++17+ if with initializer
+if (auto value = getValue(); value &gt; 0) {
+  // use value
+}
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="">循环</div>
@@ -447,15 +545,23 @@ for i in 0..5 {
 }
 for i in a.iter() {
     println!("a[{}] = {}", i, a[i]);
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// 普通for循环
-
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// 普通for循环
+for(int i = 0; i &lt; 10; i++) { }
 // 仅判断
-
+for(; rand() % 2 == 0;) {}
 // 无限循环
-
+for(;;) {}
 // 遍历索引
-
-// 遍历元素
+int len = sizeof arr / sizeof arr[0];
+for(int index = 0; index &lt; len; index++) { }
+// 遍历元素 (C++11)
+for(auto value : arr) {}
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">// Range-based for loop (preferred in C++23)
+for (const auto& item : container) { }
+// Traditional for loop
+for (int i = 0; i &lt; 10; i++) { }
+// C++20+ ranges
+for (auto i : std::views::iota(0, 10)) { }
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">while</div>
@@ -473,7 +579,9 @@ let num = loop {
     }
     i += 1;
 };
-num == 10;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+num == 10;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">while(rand() % 2 == 0) {}
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">while (condition()) {}
+</code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
       <div class="class" style="">选择</div>
@@ -496,12 +604,31 @@ match num {
     3=&gt;println!("=3"),
     4..=20=&gt; println!("4&lt;= x &lt;= 20"),
     _=&gt;println!("other"),
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
-
-
-
-
-
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">switch(value) {
+  case 1:
+  case 2:
+    // &lt; 3
+    break;
+  case 3:
+    // = 3
+    break;
+  default:
+    // other
+    break;
+}
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">// C++17+ switch with initializer
+switch (auto value = getValue(); value) {
+  case 1:
+  case 2:
+    // &lt; 3
+    break;
+  case 3:
+    // = 3
+    break;
+  default:
+    // other
+    break;
+}
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -515,11 +642,32 @@ match num {
 if err != nil {
   // 错误处理
 }
-</code></pre></div></div><div class="lang"></div><div class="lang"><div class="code"><pre><code class="c++">
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">// Rust uses Result&lt;T, E&gt; instead of exceptions
+fn might_fail() -&gt; Result&lt;i32, String&gt; {
+    if true {
+        Ok(42)
+    } else {
+        Err("Something went wrong".to_string())
+    }
+}
 
-
-
-
+match might_fail() {
+    Ok(value) =&gt; println!("Success: {}", value),
+    Err(e) =&gt; println!("Error: {}", e),
+}
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">try {
+  // code that might throw
+} catch (const std::exception& e) {
+  // handle exception
+} catch (...) {
+  // handle any other exception
+}
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">try {
+  // code that might throw
+} catch (const std::exception& e) {
+  // C++23 format
+  std::cout &lt;&lt; std::format("Error: {}\n", e.what());
+}
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -534,8 +682,17 @@ if err != nil {
   return a + b;
 }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">pub fn sum(a: i32, b: i32) -&gt; i32 {
     a + b
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
-
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">int sum(int a, int b) {
+  return a + b;
+}
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">auto sum(int a, int b) -&gt; int { // C++23 trailing return type
+  return a + b;
+}
+// C++20+ concepts
+template&lt;std::integral T&gt;
+auto sum(T a, T b) -&gt; T {
+  return a + b;
+}
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">匿名方法</div>
@@ -546,8 +703,17 @@ if err != nil {
 }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">// 闭包
 let sum = |x: i32, y: i32| -&gt; i32 {
     x + y
-};</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
-
+};</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// C++11 lambda
+auto sumFun = [](int a, int b) -&gt; int {
+  return a + b;
+};
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">auto sumFun = [](int a, int b) -&gt; int {
+  return a + b;
+};
+// C++23 with auto parameters
+auto sumFun2 = [](auto a, auto b) {
+  return a + b;
+};
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">IIFE</div>
@@ -557,9 +723,21 @@ let sum = |x: i32, y: i32| -&gt; i32 {
 </code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">(a int, b int) int {
   return a + b;
 }(1, 2);
-</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
-
-
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">// Rust doesn't have traditional IIFE, but can use closures
+let result = (|a: i32, b: i32| -&gt; i32 {
+    a + b
+})(1, 2);
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// C++11 lambda IIFE
+int result = [](int a, int b) -&gt; int {
+  return a + b;
+}(1, 2);
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">auto result = [](int a, int b) -&gt; int {
+  return a + b;
+}(1, 2);
+// C++23 with immediate invocation
+auto result2 = []&lt;typename T&gt;(T a, T b) {
+  return a + b;
+}.template operator()&lt;int&gt;(1, 2);
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -577,13 +755,39 @@ let sum = |x: i32, y: i32| -&gt; i32 {
   a number
 }
 func (a *A) Method {}
-func (a *A) log { }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+func (a *A) log { }</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">struct Person {
+    name: String,
+    age: i32,
+}
 
-
-
-
-
-
+impl Person {
+    fn new(name: String, age: i32) -&gt; Person {
+        Person { name, age }
+    }
+    
+    fn greet(&self) {
+        println!("Hello, I'm {}", self.name);
+    }
+}
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">class A {
+private:
+  int value;
+public:
+  A(int v) : value(v) {}
+  int getValue() const { return value; }
+  void setValue(int v) { value = v; }
+};
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">class A {
+private:
+  int value_;
+public:
+  explicit A(int v) : value_(v) {}
+  [[nodiscard]] auto getValue() const noexcept -&gt; int { return value_; }
+  auto setValue(int v) noexcept -&gt; void { value_ = v; }
+  
+  // C++20+ spaceship operator
+  auto operator&lt;=&gt;(const A&) const = default;
+};
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">继承</div>
@@ -596,10 +800,30 @@ func (a *A) log { }</code></pre></div></div><div class="lang"><div class="code">
 }
 func (b *B) method() {
   b.A.method();
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">// Rust doesn't have traditional inheritance, uses traits instead
+trait Animal {
+    fn make_sound(&self);
+}
 
+struct Dog {
+    name: String,
+}
 
-
+impl Animal for Dog {
+    fn make_sound(&self) {
+        println!("Woof!");
+    }
+}
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">class B : public A {
+public:
+  B(int v) : A(v) {}
+  void doSomething() { }
+};
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">class B : public A {
+public:
+  explicit B(int v) : A(v) {}
+  auto doSomething() -&gt; void { }
+};
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">实例化</div>
@@ -608,7 +832,12 @@ func (b *B) method() {
   A: A{
     a: 123
   }
-};</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+};</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">let person = Person::new("Alice".to_string(), 30);
+let dog = Dog { name: "Buddy".to_string() };
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">A instance(123);
+A* instancePtr = new A(123);
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">auto instance = A{123}; // C++23 preferred style
+std::unique_ptr&lt;A&gt; instancePtr = std::make_unique&lt;A&gt;(123);
 </code></pre></div></div></div></div>
     </div></div>
     </div></div>
@@ -639,18 +868,43 @@ func (b *B) method() {
     Name string `json:"name"`
     Age  int  `json:"age"`
   } `json:"obj"`
-}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+}</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">// 需要添加依赖 serde = { version = "1.0", features = ["derive"] }
+// serde_json = "1.0"
+use serde::{Deserialize, Serialize};
 
+#[derive(Serialize, Deserialize)]
+struct JsonData {
+    name: String,
+    values: Vec&lt;i32&gt;,
+    obj: JsonObject,
+}
 
-
-
-
-
-
-
-
-
-
+#[derive(Serialize, Deserialize)]
+struct JsonObject {
+    name: String,
+    age: i32,
+}
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// C++ doesn't have built-in JSON support
+// Need external library like nlohmann/json
+// Example with manual string creation:
+std::string jsonStr = R"({
+  "name": "example",
+  "values": [1, 2, 3],
+  "obj": {
+    "name": "name",
+    "age": 12
+  }
+})";
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">// C++23 still requires external library like nlohmann/json
+// Using raw string literal
+auto jsonStr = R"({
+  "name": "example",
+  "values": [1, 2, 3],
+  "obj": {
+    "name": "name",
+    "age": 12
+  }
+})"s;
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">编码</div>
@@ -660,8 +914,22 @@ func (b *B) method() {
 a := struct {
   Name int `json:name`
 }{123}
-jsonStr, _ := json.Marshal(a)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
-
+jsonStr, _ := json.Marshal(a)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">use serde_json;
+let data = JsonData {
+    name: "example".to_string(),
+    values: vec![1, 2, 3],
+    obj: JsonObject {
+        name: "name".to_string(),
+        age: 12,
+    },
+};
+let json_str = serde_json::to_string(&data).unwrap();
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// Using manual string construction
+std::ostringstream oss;
+oss &lt;&lt; "{\"name\":" &lt;&lt; 123 &lt;&lt; "}";
+std::string jsonStr = oss.str();
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">// C++23 with format library
+auto jsonStr = std::format(R"({{"name":{}}})", 123);
 </code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">解码</div>
@@ -670,7 +938,12 @@ jsonStr, _ := json.Marshal(a)</code></pre></div></div><div class="lang"><div cla
 strBytes := []btye(str);
 var jsonStruct JStruct;
 json.Unmarshal(strBytes, &jsonStruct);
-</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">let json_str = r#"{"name": 123}"#;
+let value: serde_json::Value = serde_json::from_str(json_str).unwrap();
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// Manual parsing required or use library
+// Example would require external JSON library
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">// Still requires external library
+// nlohmann::json j = nlohmann::json::parse(jsonStr);
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -678,7 +951,19 @@ json.Unmarshal(strBytes, &jsonStruct);
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">当前时间戳</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const now: number = Date.now();</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "time"
-time.Now().Unix();</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+time.Now().Unix();</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">use std::time::{SystemTime, UNIX_EPOCH};
+let timestamp = SystemTime::now()
+    .duration_since(UNIX_EPOCH)
+    .unwrap()
+    .as_millis();
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// #include &lt;chrono&gt;
+auto now = std::chrono::system_clock::now();
+auto timestamp = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(
+  now.time_since_epoch()).count();
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">auto now = std::chrono::system_clock::now();
+auto timestamp = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(
+  now.time_since_epoch()).count();
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">获取时间</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">const date = new Date();
@@ -696,13 +981,33 @@ now.Day(); // 日
 now.Hour(); //时
 now.Minute(); // 分
 int(now.Second()); // 秒，有小数
-</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">
-
-
-
-
-
-
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">use chrono::{DateTime, Local};
+let now: DateTime&lt;Local&gt; = Local::now();
+let year = now.year();
+let month = now.month();
+let day = now.day();
+let hour = now.hour();
+let minute = now.minute();
+let second = now.second();
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// #include &lt;ctime&gt;
+std::time_t t = std::time(nullptr);
+std::tm* tm = std::localtime(&t);
+int year = tm-&gt;tm_year + 1900;
+int month = tm-&gt;tm_mon + 1;
+int day = tm-&gt;tm_mday;
+int hour = tm-&gt;tm_hour;
+int minute = tm-&gt;tm_min;
+int second = tm-&gt;tm_sec;
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">// C++20+ chrono improvements
+auto now = std::chrono::system_clock::now();
+auto time_t = std::chrono::system_clock::to_time_t(now);
+auto tm = *std::localtime(&time_t);
+auto year = tm.tm_year + 1900;
+auto month = tm.tm_mon + 1;
+auto day = tm.tm_mday;
+auto hour = tm.tm_hour;
+auto minute = tm.tm_min;
+auto second = tm.tm_sec;
 </code></pre></div></div></div></div>
     </div></div>
     </div><div class="line">
@@ -710,7 +1015,10 @@ int(now.Second()); // 秒，有小数
       <div class="child"><div class="line">
       <div class="class" style="padding-right: 0px">当前代码文件</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">__filename</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "runtime"
-_, filename, _, _ := runtime.Caller(1)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+_, filename, _, _ := runtime.Caller(1)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">file!()
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">__FILE__
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">std::source_location::current().file_name(); // C++20+
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">当前代码目录</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">__dirname</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import (
@@ -718,33 +1026,72 @@ _, filename, _, _ := runtime.Caller(1)</code></pre></div></div><div class="lang"
   "path"
 )
 _, filename, _, _ := runtime.Caller(1)
-dirname := path.Dir(filename)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+dirname := path.Dir(filename)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">// 需要 std::env
+use std::env;
+let current_dir = env::current_dir().unwrap();
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// Need to use filesystem library or platform-specific code
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">std::filesystem::current_path(); // C++17+
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">进程启动路径</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.cwd()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-dir, _ := os.Getwd() </code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+dir, _ := os.Getwd() </code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">let current_dir = env::current_dir().unwrap();
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// #include &lt;unistd.h&gt;
+char cwd[1024];
+getcwd(cwd, sizeof(cwd));
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">std::filesystem::current_path();
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">环境变量</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.env.ENV_NAME</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-os.Getenv("ENV_NAME")</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+os.Getenv("ENV_NAME")</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">let env_var = env::var("ENV_NAME").unwrap_or_default();
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// #include &lt;cstdlib&gt;
+const char* env = std::getenv("ENV_NAME");
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">// C++23 with expected
+std::expected&lt;std::string, int&gt; getEnv(const std::string& name) {
+  if (auto env = std::getenv(name.c_str())) {
+    return std::string{env};
+  }
+  return std::unexpected{-1};
+}
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">启动时入参</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.argv</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-os.Args</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+os.Args</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">use std::env;
+let args: Vec&lt;String&gt; = env::args().collect();
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// int main(int argc, char* argv[])
+// argc, argv
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">// int main(int argc, char* argv[])
+// std::span&lt;char*&gt; args{argv, static_cast&lt;size_t&gt;(argc)}; // C++20+
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">当前进程id</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.pid</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-os.Getpid()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+os.Getpid()</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">use std::process;
+let pid = process::id();
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// #include &lt;unistd.h&gt;
+pid_t pid = getpid();
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">// Still platform-specific, no standard solution
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">退出进程</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">process.exit(signal)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "os"
-os.Exit(signal)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++"></code></pre></div></div></div></div>
+os.Exit(signal)</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">process::exit(0);
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// #include &lt;cstdlib&gt;
+std::exit(0);
+</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">std::exit(0);
+</code></pre></div></div></div></div>
     </div><div class="line">
       <div class="class" style="padding-right: 0px">输出</div>
       <div class="child"><div class="line"><div class="lang"><div class="code"><pre><code class="typescript">console.log</code></pre></div></div><div class="lang"><div class="code"><pre><code class="golang">import "fmt"
-fmt.Println</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust"></code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++">// include &lt;iostream&gt;
-std::cout &lt;&lt; value &lt;&lt; std::endl;
-</code></pre></div></div></div></div>
+fmt.Println</code></pre></div></div><div class="lang"><div class="code"><pre><code class="rust">println!("value");
+print!("value");
+eprintln!("error message");</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++11">// #include &lt;iostream&gt;
+std::cout &lt;&lt; "value" &lt;&lt; std::endl;</code></pre></div></div><div class="lang"><div class="code"><pre><code class="c++23">// C++23 with print
+std::print("value\n"); // C++23
+// Alternative
+std::cout &lt;&lt; "value\n";</code></pre></div></div></div></div>
     </div></div>
     </div></div>
     </div>
