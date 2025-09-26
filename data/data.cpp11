@@ -1,0 +1,283 @@
+// - 变量-单个变量
+const int a = 123;
+int a(123);
+int a{123}; // C++11 brace initialization
+int a = {123};
+char b[] = "str";
+bool c = false;
+// - 变量-多个变量
+int d = 1, e = 2;
+const int f = 1, g = 2;
+
+// - 注释
+// 单行注释
+/* 多行注释 */ 
+// - 基本类型-字符串
+char str[4] = {"s", "t", "r", "\0"};
+char str[] = "str";
+// #include <string>
+std::string str = "str";
+
+// - 基本类型-数字
+int num = 123;
+// - 基本类型-浮点数
+float num = 1.49f;
+double num = 1.49;
+// - 基本类型-布尔值
+bool f = false;
+// - 数组-定义
+int arr[2] = {1, 2};
+int arr[] = {1, 2}; // C++11 style
+// - 数组-获取长度
+sizeof arr / sizeof(arr[0]) == 2;
+// C++11
+int length = std::end(arr) - std::begin(arr);
+// - 数组-遍历
+int len = sizeof arr / sizeof arr[0];
+for (int index = 0; index < len; index ++) {
+  int value = arr[index];
+}
+// C++11 range-based for loop
+for (auto value : arr) {}
+
+// - 数组-截取
+int a[1];
+for (int index = 0, aIndex = 0; index < 1; index ++, aIndex ++) {
+  a[aIndex] = arr[index];
+}
+// - 数组-连接
+// #include <sstream>
+std::stringstream ss;
+int len = sizeof a / sizeof a[0];
+for(int i = 0; i < len; i ++) {
+   ss << a[i] << (i < len - 1 ? ".": "");
+}
+
+// - Map-创建
+// #include <map>
+std::map<std::string, std::string> mapa;
+// C++11 initializer list
+std::map<std::string, std::string> mapa = {{"key1", "value1"}, {"key2", "value2"}};
+// - Map-设置
+// 1. 直接设置，可覆盖
+mapa["a"] = "b";
+// 2. insert，当已存在key，则失败
+// #include <utility>
+auto result = mapa.insert(std::make_pair("a", "b"));
+result.second == true;
+// - Map-读取
+// 1. 直接读取
+mapa["a"];
+// 2. 通过迭代器来读取
+auto ite = mapa.find("c");
+if (ite != mapa.end()) {
+  std::string key = ite->first;
+  std::string value = ite->second;
+}
+
+// - Map-长度
+int mapalen = mapa.size();
+// - Map-删除
+// 1. 用关键字刪除
+int n = mapa.erase("a");
+// 2. 用迭代器刪除
+auto iter = mapa.find("c");
+mapa.erase(iter);
+
+// - Map-遍历
+for (auto iter = mapa.begin(); iter != mapa.end(); ++iter) {
+  std::string key = iter->first;
+  std::string value = iter->second;
+}
+// C++11 range-based for loop
+for (const auto& pair : mapa) {
+  std::string key = pair.first;
+  std::string value = pair.second;
+}
+
+// - 结构-定义
+struct STR {
+  std::string name;
+  int age;
+};
+
+struct STR obj = { "test", 20 };
+// C++11 uniform initialization
+STR obj { "test", 20 };
+
+// - 结构-获取属性值
+obj.name; // "test"
+obj.age;  // 20
+
+// - 正则表达式-定义
+// #include <regex>
+std::regex reg("(a|b)", std::regex_constants::icase);
+// - 正则表达式-是否匹配
+std::string s = "A";
+bool match = std::regex_search(s, reg);
+// - 正则表达式-匹配结果
+std::smatch submatch;
+std::regex_search(s, submatch, reg);
+std::ssub_match matchRes = submatch[0];
+std::string match = matchRes.str();
+// match === 'A'
+// - 枚举
+enum class Color : int {
+  RED = 1,
+  GREEN = 2,
+  BLUE = 3
+};
+Color color = Color::RED;
+
+// - 条件
+if (true) {
+} else if (false) {
+} else { }
+
+// - 循环-for
+// 普通for循环
+for(int i = 0; i < 10; i++) { }
+// 仅判断
+for(; rand() % 2 == 0;) {}
+// 无限循环
+for(;;) {}
+// 遍历索引
+int len = sizeof arr / sizeof arr[0];
+for(int index = 0; index < len; index++) { }
+// 遍历元素 (C++11)
+for(auto value : arr) {}
+
+// - 循环-while
+while(rand() % 2 == 0) {}
+
+// - 选择-switch
+switch(value) {
+  case 1:
+  case 2:
+    // < 3
+    break;
+  case 3:
+    // = 3
+    break;
+  default:
+    // other
+    break;
+}
+
+// - 错误捕获
+try {
+  // code that might throw
+} catch (const std::exception& e) {
+  // handle exception
+} catch (...) {
+  // handle any other exception
+}
+
+// - 方法-普通方法
+int sum(int a, int b) {
+  return a + b;
+}
+
+// - 方法-匿名方法
+// C++11 lambda
+auto sumFun = [](int a, int b) -> int {
+  return a + b;
+};
+
+// - 方法-IIFE
+// C++11 lambda IIFE
+int result = [](int a, int b) -> int {
+  return a + b;
+}(1, 2);
+
+// - 类-声明
+class A {
+private:
+  int value;
+public:
+  A(int v) : value(v) {}
+  int getValue() const { return value; }
+  void setValue(int v) { value = v; }
+};
+
+// - 类-继承
+class B : public A {
+public:
+  B(int v) : A(v) {}
+  void doSomething() { }
+};
+
+// - 类-实例化
+A instance(123);
+A* instancePtr = new A(123);
+
+// - JSON-定义
+// C++ doesn't have built-in JSON support
+// Need external library like nlohmann/json
+// Example with manual string creation:
+std::string jsonStr = R"({
+  "name": "example",
+  "values": [1, 2, 3],
+  "obj": {
+    "name": "name",
+    "age": 12
+  }
+})";
+
+// - JSON-编码
+// Using manual string construction
+std::ostringstream oss;
+oss << "{\"name\":" << 123 << "}";
+std::string jsonStr = oss.str();
+
+// - JSON-解码
+// Manual parsing required or use library
+// Example would require external JSON library
+
+// - 时间-当前时间戳
+// #include <chrono>
+auto now = std::chrono::system_clock::now();
+auto timestamp = std::chrono::duration_cast<std::chrono::milliseconds>(
+  now.time_since_epoch()).count();
+
+// - 时间-获取时间
+// #include <ctime>
+std::time_t t = std::time(nullptr);
+std::tm* tm = std::localtime(&t);
+int year = tm->tm_year + 1900;
+int month = tm->tm_mon + 1;
+int day = tm->tm_mday;
+int hour = tm->tm_hour;
+int minute = tm->tm_min;
+int second = tm->tm_sec;
+
+// - 系统变量-当前代码文件
+__FILE__
+
+// - 系统变量-当前代码目录
+// Need to use filesystem library or platform-specific code
+
+// - 系统变量-进程启动路径
+// #include <unistd.h>
+char cwd[1024];
+getcwd(cwd, sizeof(cwd));
+
+// - 系统变量-环境变量
+// #include <cstdlib>
+const char* env = std::getenv("ENV_NAME");
+
+// - 系统变量-启动时入参
+// int main(int argc, char* argv[])
+// argc, argv
+
+// - 系统变量-当前进程id
+// #include <unistd.h>
+pid_t pid = getpid();
+
+// - 系统变量-退出进程
+// #include <cstdlib>
+std::exit(0);
+
+// - 系统变量-输出
+// #include <iostream>
+std::cout << "value" << std::endl;

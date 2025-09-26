@@ -1,0 +1,282 @@
+// - 变量-单个变量
+const int a = 123;
+int a{123}; // C++23 prefers brace initialization
+auto b = "str"; // C++23 auto deduction
+bool c = false;
+// - 变量-多个变量
+auto [d, e] = std::make_pair(1, 2); // C++17+ structured bindings
+const auto [f, g] = std::make_pair(1, 2);
+
+// - 注释
+// 单行注释
+/* 多行注释 */ 
+// - 基本类型-字符串
+using namespace std::string_literals;
+std::string str = "str"s;
+auto str2 = "str"sv; // string_view
+
+// - 基本类型-数字
+int num = 123;
+auto num2 = 123; // C++23 auto
+// - 基本类型-浮点数
+float num = 1.49f;
+double num = 1.49;
+auto floatNum = 1.49f; // C++23 auto
+// - 基本类型-布尔值
+bool f = false;
+auto bf = false; // C++23 auto
+
+// - 数组-定义
+std::array<int, 2> arr{1, 2}; // C++23 prefers std::array
+std::vector<int> vec{1, 2}; // C++23 modern approach
+// - 数组-获取长度
+arr.size() == 2;
+vec.size() == 2;
+// - 数组-遍历
+for (const auto& value : arr) {
+  // do something
+}
+// C++20+ ranges
+for (auto&& value : arr | std::views::filter([](int x) { return x > 0; })) {
+  // filtered iteration
+}
+
+// - 数组-截取
+// C++23 with ranges
+auto sliced = arr | std::views::take(1);
+// Traditional approach
+std::vector<int> a(arr.begin(), arr.begin() + 1);
+
+// - 数组-连接
+// C++23 with ranges and format
+std::string result = std::format("{}", fmt::join(arr, "."));
+// Alternative with stringstream
+std::stringstream ss;
+std::copy(arr.begin(), arr.end(), std::ostream_iterator<int>(ss, "."));
+
+// - Map-创建
+std::unordered_map<std::string, std::string> mapa{
+  {"key1", "value1"}, 
+  {"key2", "value2"}
+}; // C++23 prefers unordered_map for performance
+// - Map-设置
+mapa["a"] = "b";
+mapa.insert_or_assign("a", "b"); // C++17+
+// - Map-读取
+auto value = mapa["a"];
+// C++23 modern approach with optional
+if (auto it = mapa.find("c"); it != mapa.end()) {
+  auto [key, value] = *it; // C++17+ structured bindings
+}
+
+// - Map-长度
+auto mapSize = mapa.size();
+// - Map-删除
+mapa.erase("a");
+// - Map-遍历
+for (const auto& [key, value] : mapa) { // C++17+ structured bindings
+  // do something
+}
+
+// - 结构-定义
+struct STR {
+  std::string name;
+  int age;
+  
+  // C++20+ spaceship operator
+  auto operator<=>(const STR&) const = default;
+};
+
+STR obj{"test", 20}; // C++23 aggregate initialization
+
+// - 结构-获取属性值
+obj.name; // "test"
+obj.age;  // 20
+
+// - 正则表达式-定义
+std::regex reg{R"((a|b))", std::regex_constants::icase};
+// - 正则表达式-是否匹配
+std::string s = "A";
+bool match = std::regex_search(s, reg);
+// - 正则表达式-匹配结果
+std::smatch submatch;
+std::regex_search(s, submatch, reg);
+auto matchRes = submatch[0];
+std::string match = matchRes.str();
+
+// - 枚举
+enum class Color : int {
+  RED = 1,
+  GREEN = 2,
+  BLUE = 3
+};
+Color color = Color::RED;
+// C++23 enhanced enums
+using enum Color;
+auto red = RED; // Can use unqualified name
+
+// - 条件
+if (true) {
+} else if (false) {
+} else { }
+// C++17+ if with initializer
+if (auto value = getValue(); value > 0) {
+  // use value
+}
+
+// - 循环-for
+// Range-based for loop (preferred in C++23)
+for (const auto& item : container) { }
+// Traditional for loop
+for (int i = 0; i < 10; i++) { }
+// C++20+ ranges
+for (auto i : std::views::iota(0, 10)) { }
+
+// - 循环-while
+while (condition()) {}
+
+// - 选择-switch
+// C++17+ switch with initializer
+switch (auto value = getValue(); value) {
+  case 1:
+  case 2:
+    // < 3
+    break;
+  case 3:
+    // = 3
+    break;
+  default:
+    // other
+    break;
+}
+
+// - 错误捕获
+try {
+  // code that might throw
+} catch (const std::exception& e) {
+  // C++23 format
+  std::cout << std::format("Error: {}\n", e.what());
+}
+
+// - 方法-普通方法
+auto sum(int a, int b) -> int { // C++23 trailing return type
+  return a + b;
+}
+// C++20+ concepts
+template<std::integral T>
+auto sum(T a, T b) -> T {
+  return a + b;
+}
+
+// - 方法-匿名方法
+auto sumFun = [](int a, int b) -> int {
+  return a + b;
+};
+// C++23 with auto parameters
+auto sumFun2 = [](auto a, auto b) {
+  return a + b;
+};
+
+// - 方法-IIFE
+auto result = [](int a, int b) -> int {
+  return a + b;
+}(1, 2);
+// C++23 with immediate invocation
+auto result2 = []<typename T>(T a, T b) {
+  return a + b;
+}.template operator()<int>(1, 2);
+
+// - 类-声明
+class A {
+private:
+  int value_;
+public:
+  explicit A(int v) : value_(v) {}
+  [[nodiscard]] auto getValue() const noexcept -> int { return value_; }
+  auto setValue(int v) noexcept -> void { value_ = v; }
+  
+  // C++20+ spaceship operator
+  auto operator<=>(const A&) const = default;
+};
+
+// - 类-继承
+class B : public A {
+public:
+  explicit B(int v) : A(v) {}
+  auto doSomething() -> void { }
+};
+
+// - 类-实例化
+auto instance = A{123}; // C++23 preferred style
+std::unique_ptr<A> instancePtr = std::make_unique<A>(123);
+
+// - JSON-定义
+// C++23 still requires external library like nlohmann/json
+// Using raw string literal
+auto jsonStr = R"({
+  "name": "example",
+  "values": [1, 2, 3],
+  "obj": {
+    "name": "name",
+    "age": 12
+  }
+})"s;
+
+// - JSON-编码
+// C++23 with format library
+auto jsonStr = std::format(R"({{"name":{}}})", 123);
+
+// - JSON-解码
+// Still requires external library
+// nlohmann::json j = nlohmann::json::parse(jsonStr);
+
+// - 时间-当前时间戳
+auto now = std::chrono::system_clock::now();
+auto timestamp = std::chrono::duration_cast<std::chrono::milliseconds>(
+  now.time_since_epoch()).count();
+
+// - 时间-获取时间
+// C++20+ chrono improvements
+auto now = std::chrono::system_clock::now();
+auto time_t = std::chrono::system_clock::to_time_t(now);
+auto tm = *std::localtime(&time_t);
+auto year = tm.tm_year + 1900;
+auto month = tm.tm_mon + 1;
+auto day = tm.tm_mday;
+auto hour = tm.tm_hour;
+auto minute = tm.tm_min;
+auto second = tm.tm_sec;
+
+// - 系统变量-当前代码文件
+std::source_location::current().file_name(); // C++20+
+
+// - 系统变量-当前代码目录
+std::filesystem::current_path(); // C++17+
+
+// - 系统变量-进程启动路径
+std::filesystem::current_path();
+
+// - 系统变量-环境变量
+// C++23 with expected
+std::expected<std::string, int> getEnv(const std::string& name) {
+  if (auto env = std::getenv(name.c_str())) {
+    return std::string{env};
+  }
+  return std::unexpected{-1};
+}
+
+// - 系统变量-启动时入参
+// int main(int argc, char* argv[])
+// std::span<char*> args{argv, static_cast<size_t>(argc)}; // C++20+
+
+// - 系统变量-当前进程id
+// Still platform-specific, no standard solution
+
+// - 系统变量-退出进程
+std::exit(0);
+
+// - 系统变量-输出
+// C++23 with print
+std::print("value\n"); // C++23
+// Alternative
+std::cout << "value\n";
